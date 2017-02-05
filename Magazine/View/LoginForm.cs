@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazine.View;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,6 +39,11 @@ namespace Magazine {
         private void cancelButton_Click(Object sender, EventArgs e) {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void registerButton_Click(object sender, EventArgs e) {
+            RegisterForm rf = new RegisterForm();
+            rf.ShowDialog();
         }
     }
 }

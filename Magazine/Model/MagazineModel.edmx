@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="magazineModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EditorComment" Type="text" />
+          <Property Name="PAPER_id" Type="int" Nullable="false" />
+          <Property Name="Content" Type="mediumblob" Nullable="false" />
+          <Property Name="Extension" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paper">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Author" Type="int" Nullable="false" />
+          <Property Name="DateOfPublishing" Type="date" />
+          <Property Name="Editor" Type="int" Nullable="false" />
+          <Property Name="STATUS_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="USER_id" />
+            <PropertyRef Name="FILE_id" />
+          </Key>
+          <Property Name="USER_id" Type="int" Nullable="false" />
+          <Property Name="FILE_id" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="200" />
+          <Property Name="STATUS_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Password" Type="binary" MaxLength="160" Nullable="false" />
+          <Property Name="Salt" Type="binary" MaxLength="128" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Lastname" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="GROUP_id" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_FILE_PAPER1">
+          <End Role="paper" Type="Self.paper" Multiplicity="1" />
+          <End Role="file" Type="Self.file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paper">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="file">
+              <PropertyRef Name="PAPER_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAPER_STATUS1">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="paper" Type="Self.paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paper">
+              <PropertyRef Name="STATUS_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAPER_USER1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="paper" Type="Self.paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paper">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAPER_USER2">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="paper" Type="Self.paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paper">
+              <PropertyRef Name="Editor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REVIEWER_FILE1">
+          <End Role="file" Type="Self.file" Multiplicity="1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="FILE_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REVIEWER_STATUS1">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="STATUS_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REVIEWER_USER1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="USER_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USER_GROUP">
+          <End Role="group" Type="Self.group" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="GROUP_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="magazineModelStoreContainer">
+          <EntitySet Name="file" EntityType="Self.file" Schema="magazine" store:Type="Tables" />
+          <EntitySet Name="group" EntityType="Self.group" Schema="magazine" store:Type="Tables" />
+          <EntitySet Name="paper" EntityType="Self.paper" Schema="magazine" store:Type="Tables" />
+          <EntitySet Name="review" EntityType="Self.review" Schema="magazine" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="magazine" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="magazine" store:Type="Tables" />
+          <AssociationSet Name="fk_FILE_PAPER1" Association="Self.fk_FILE_PAPER1">
+            <End Role="paper" EntitySet="paper" />
+            <End Role="file" EntitySet="file" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAPER_STATUS1" Association="Self.fk_PAPER_STATUS1">
+            <End Role="status" EntitySet="status" />
+            <End Role="paper" EntitySet="paper" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAPER_USER1" Association="Self.fk_PAPER_USER1">
+            <End Role="user" EntitySet="user" />
+            <End Role="paper" EntitySet="paper" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAPER_USER2" Association="Self.fk_PAPER_USER2">
+            <End Role="user" EntitySet="user" />
+            <End Role="paper" EntitySet="paper" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REVIEWER_FILE1" Association="Self.fk_REVIEWER_FILE1">
+            <End Role="file" EntitySet="file" />
+            <End Role="review" EntitySet="review" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REVIEWER_STATUS1" Association="Self.fk_REVIEWER_STATUS1">
+            <End Role="status" EntitySet="status" />
+            <End Role="review" EntitySet="review" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REVIEWER_USER1" Association="Self.fk_REVIEWER_USER1">
+            <End Role="user" EntitySet="user" />
+            <End Role="review" EntitySet="review" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USER_GROUP" Association="Self.fk_USER_GROUP">
+            <End Role="group" EntitySet="group" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="magazineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EditorComment" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="PAPER_id" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Extension" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="paper" Relationship="Self.fk_FILE_PAPER1" FromRole="file" ToRole="paper" />
+          <NavigationProperty Name="reviews" Relationship="Self.fk_REVIEWER_FILE1" FromRole="file" ToRole="review" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.fk_USER_GROUP" FromRole="group" ToRole="user" />
+        </EntityType>
+        <EntityType Name="paper">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Author" Type="Int32" Nullable="false" />
+          <Property Name="DateOfPublishing" Type="DateTime" />
+          <Property Name="Editor" Type="Int32" Nullable="false" />
+          <Property Name="STATUS_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="files" Relationship="Self.fk_FILE_PAPER1" FromRole="paper" ToRole="file" />
+          <NavigationProperty Name="status" Relationship="Self.fk_PAPER_STATUS1" FromRole="paper" ToRole="status" />
+          <NavigationProperty Name="author_user" Relationship="Self.fk_PAPER_USER1" FromRole="paper" ToRole="user" />
+          <NavigationProperty Name="editor_user" Relationship="Self.fk_PAPER_USER2" FromRole="paper" ToRole="user" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="USER_id" />
+            <PropertyRef Name="FILE_id" />
+          </Key>
+          <Property Name="USER_id" Type="Int32" Nullable="false" />
+          <Property Name="FILE_id" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="file" Relationship="Self.fk_REVIEWER_FILE1" FromRole="review" ToRole="file" />
+          <NavigationProperty Name="status" Relationship="Self.fk_REVIEWER_STATUS1" FromRole="review" ToRole="status" />
+          <NavigationProperty Name="user" Relationship="Self.fk_REVIEWER_USER1" FromRole="review" ToRole="user" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="papers" Relationship="Self.fk_PAPER_STATUS1" FromRole="status" ToRole="paper" />
+          <NavigationProperty Name="reviews" Relationship="Self.fk_REVIEWER_STATUS1" FromRole="status" ToRole="review" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Salt" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GROUP_id" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="group" Relationship="Self.fk_USER_GROUP" FromRole="user" ToRole="group" />
+          <NavigationProperty Name="papers" Relationship="Self.fk_PAPER_USER1" FromRole="user" ToRole="paper" />
+          <NavigationProperty Name="papers1" Relationship="Self.fk_PAPER_USER2" FromRole="user" ToRole="paper" />
+          <NavigationProperty Name="reviews" Relationship="Self.fk_REVIEWER_USER1" FromRole="user" ToRole="review" />
+        </EntityType>
+        <Association Name="fk_FILE_PAPER1">
+          <End Role="paper" Type="Self.paper" Multiplicity="1" />
+          <End Role="file" Type="Self.file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paper">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="file">
+              <PropertyRef Name="PAPER_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REVIEWER_FILE1">
+          <End Role="file" Type="Self.file" Multiplicity="1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="FILE_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USER_GROUP">
+          <End Role="group" Type="Self.group" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="GROUP_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAPER_STATUS1">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="paper" Type="Self.paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paper">
+              <PropertyRef Name="STATUS_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAPER_USER1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="paper" Type="Self.paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paper">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAPER_USER2">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="paper" Type="Self.paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paper">
+              <PropertyRef Name="Editor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REVIEWER_STATUS1">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="STATUS_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REVIEWER_USER1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="review" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="review">
+              <PropertyRef Name="USER_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="magazineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="files" EntityType="Self.file" />
+          <EntitySet Name="groups" EntityType="Self.group" />
+          <EntitySet Name="papers" EntityType="Self.paper" />
+          <EntitySet Name="reviews" EntityType="Self.review" />
+          <EntitySet Name="status" EntityType="Self.status" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="fk_FILE_PAPER1" Association="Self.fk_FILE_PAPER1">
+            <End Role="paper" EntitySet="papers" />
+            <End Role="file" EntitySet="files" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REVIEWER_FILE1" Association="Self.fk_REVIEWER_FILE1">
+            <End Role="file" EntitySet="files" />
+            <End Role="review" EntitySet="reviews" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USER_GROUP" Association="Self.fk_USER_GROUP">
+            <End Role="group" EntitySet="groups" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAPER_STATUS1" Association="Self.fk_PAPER_STATUS1">
+            <End Role="status" EntitySet="status" />
+            <End Role="paper" EntitySet="papers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAPER_USER1" Association="Self.fk_PAPER_USER1">
+            <End Role="user" EntitySet="users" />
+            <End Role="paper" EntitySet="papers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAPER_USER2" Association="Self.fk_PAPER_USER2">
+            <End Role="user" EntitySet="users" />
+            <End Role="paper" EntitySet="papers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REVIEWER_STATUS1" Association="Self.fk_REVIEWER_STATUS1">
+            <End Role="status" EntitySet="status" />
+            <End Role="review" EntitySet="reviews" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REVIEWER_USER1" Association="Self.fk_REVIEWER_USER1">
+            <End Role="user" EntitySet="users" />
+            <End Role="review" EntitySet="reviews" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="magazineModelStoreContainer" CdmEntityContainer="magazineEntities">
+          <EntitySetMapping Name="files">
+            <EntityTypeMapping TypeName="magazineModel.file">
+              <MappingFragment StoreEntitySet="file">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="EditorComment" ColumnName="EditorComment" />
+                <ScalarProperty Name="PAPER_id" ColumnName="PAPER_id" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="magazineModel.group">
+              <MappingFragment StoreEntitySet="group">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="papers">
+            <EntityTypeMapping TypeName="magazineModel.paper">
+              <MappingFragment StoreEntitySet="paper">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="DateOfPublishing" ColumnName="DateOfPublishing" />
+                <ScalarProperty Name="Editor" ColumnName="Editor" />
+                <ScalarProperty Name="STATUS_id" ColumnName="STATUS_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reviews">
+            <EntityTypeMapping TypeName="magazineModel.review">
+              <MappingFragment StoreEntitySet="review">
+                <ScalarProperty Name="USER_id" ColumnName="USER_id" />
+                <ScalarProperty Name="FILE_id" ColumnName="FILE_id" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="STATUS_id" ColumnName="STATUS_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="magazineModel.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="magazineModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="GROUP_id" ColumnName="GROUP_id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

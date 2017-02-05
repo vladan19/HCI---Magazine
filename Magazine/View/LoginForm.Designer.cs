@@ -34,6 +34,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.errorTextLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.registerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.usernameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(3)))));
-            this.usernameTextBox.Location = new System.Drawing.Point(231, 47);
+            this.usernameTextBox.Location = new System.Drawing.Point(231, 64);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(309, 23);
             this.usernameTextBox.TabIndex = 0;
@@ -54,7 +55,7 @@
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(3)))));
-            this.passwordTextBox.Location = new System.Drawing.Point(231, 77);
+            this.passwordTextBox.Location = new System.Drawing.Point(231, 94);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(309, 23);
             this.passwordTextBox.TabIndex = 1;
@@ -64,7 +65,7 @@
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.loginButton.Location = new System.Drawing.Point(308, 121);
+            this.loginButton.Location = new System.Drawing.Point(308, 138);
             this.loginButton.Margin = new System.Windows.Forms.Padding(0);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(111, 31);
@@ -78,7 +79,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.label1.Location = new System.Drawing.Point(152, 50);
+            this.label1.Location = new System.Drawing.Point(152, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 17);
             this.label1.TabIndex = 3;
@@ -89,7 +90,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.label2.Location = new System.Drawing.Point(152, 80);
+            this.label2.Location = new System.Drawing.Point(152, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 4;
@@ -99,7 +100,7 @@
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cancelButton.Location = new System.Drawing.Point(429, 121);
+            this.cancelButton.Location = new System.Drawing.Point(429, 138);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(0);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(111, 31);
@@ -114,7 +115,7 @@
             this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.label3.Location = new System.Drawing.Point(152, 21);
+            this.label3.Location = new System.Drawing.Point(152, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(388, 17);
             this.label3.TabIndex = 6;
@@ -125,7 +126,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(134, 140);
+            this.pictureBox1.Size = new System.Drawing.Size(134, 157);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -134,7 +135,7 @@
             // 
             this.errorTextLabel.AutoSize = true;
             this.errorTextLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorTextLabel.Location = new System.Drawing.Point(231, 103);
+            this.errorTextLabel.Location = new System.Drawing.Point(231, 120);
             this.errorTextLabel.Name = "errorTextLabel";
             this.errorTextLabel.Size = new System.Drawing.Size(52, 13);
             this.errorTextLabel.TabIndex = 8;
@@ -143,12 +144,23 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(231, 105);
+            this.progressBar.Location = new System.Drawing.Point(231, 122);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(309, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar.TabIndex = 9;
             this.progressBar.Visible = false;
+            // 
+            // registerButton
+            // 
+            this.registerButton.Image = global::Magazine.Properties.Resources.add;
+            this.registerButton.Location = new System.Drawing.Point(512, 12);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(31, 23);
+            this.registerButton.TabIndex = 10;
+            this.registerButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // LoginForm
             // 
@@ -156,7 +168,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(555, 165);
+            this.ClientSize = new System.Drawing.Size(555, 178);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.errorTextLabel);
             this.Controls.Add(this.pictureBox1);
@@ -172,7 +185,7 @@
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Khronos Project Management System Login";
+            this.Text = "VS Magazine Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,5 +204,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label errorTextLabel;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button registerButton;
     }
 }
