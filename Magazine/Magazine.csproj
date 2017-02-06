@@ -69,6 +69,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AccountController.cs" />
+    <Compile Include="Controller\FormUtility.cs" />
+    <Compile Include="Controller\PasswordUtility.cs" />
     <Compile Include="Controls\PromptTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -198,6 +201,8 @@
       <DependentUpon>MagazineModel.edmx</DependentUpon>
       <LastGenOutput>MagazineModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\user.png" />
     <None Include="Resources\download.png" />
     <None Include="Resources\add.png" />
   </ItemGroup>

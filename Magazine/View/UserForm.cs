@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazine.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,12 @@ namespace Magazine.View {
     public partial class UserForm : Form {
         public UserForm() {
             InitializeComponent();
+            uploadTableLayoutPanel.RowStyles[1].Height = 0;
+            userToolStripDropDownButton.Text = AccountController.User.Username;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Restart();
         }
     }
 }

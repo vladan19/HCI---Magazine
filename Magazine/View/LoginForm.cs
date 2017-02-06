@@ -1,4 +1,5 @@
-﻿using Magazine.View;
+﻿using Magazine.Controller;
+using Magazine.View;
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace Magazine {
             login();
         }
 
-        private void login() {
+        private async void login() {
             if (errorTextLabel.Visible)
                 errorTextLabel.Visible = false;
 
@@ -32,7 +33,17 @@ namespace Magazine {
                 if (String.IsNullOrEmpty(password))
                     passwordTextBox.CreateGraphics().DrawRectangle(Pens.Red, 0, 0, passwordTextBox.Width - 1, passwordTextBox.Height - 1);
             } else {
-                //Some code
+                bool isValid = false;
+                progressBar.Visible = true;
+                await Task.Run(() => { isValid = AccountController.Login(username, password); });
+                if (isValid) {
+                    DialogResult = DialogResult.OK;
+                }
+                else {
+                    errorTextLabel.Text = "Wrong username/password combination";
+                    errorTextLabel.Visible = true;
+                }
+                progressBar.Visible = false;
             }
         }
 

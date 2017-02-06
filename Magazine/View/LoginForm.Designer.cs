@@ -154,9 +154,9 @@
             // registerButton
             // 
             this.registerButton.Image = global::Magazine.Properties.Resources.add;
-            this.registerButton.Location = new System.Drawing.Point(512, 12);
+            this.registerButton.Location = new System.Drawing.Point(513, 5);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(31, 23);
+            this.registerButton.Size = new System.Drawing.Size(30, 30);
             this.registerButton.TabIndex = 10;
             this.registerButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.registerButton.UseVisualStyleBackColor = true;
