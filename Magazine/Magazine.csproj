@@ -73,6 +73,7 @@
     <Compile Include="Controller\FormUtility.cs" />
     <Compile Include="Controller\PaperController.cs" />
     <Compile Include="Controller\PasswordUtility.cs" />
+    <Compile Include="Controller\StatusUtility.cs" />
     <Compile Include="Controls\PromptTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

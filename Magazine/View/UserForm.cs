@@ -15,9 +15,13 @@ namespace Magazine.View {
     public partial class UserForm : Form {
         public UserForm() {
             InitializeComponent();
+            int statusOffest = 1;
             uploadTableLayoutPanel.RowStyles[1].Height = 0;
+            submissionsTableLayoutPanel.RowStyles[2].Height = 0;
             userToolStripDropDownButton.Text = AccountController.User.Username;
             papersDataListView.GetColumn(0).ImageGetter = i => 0;
+            papersDataListView.GetColumn(1).ImageGetter = p => StatusUtility.newID((p as paper).STATUS_id) + statusOffest;
+            papersDataListView.GetColumn(1).AspectToStringConverter = s => StatusUtility.Name((int)s);
             submissionsDataListView.GetColumn(0).ImageGetter = i => 1;
             papersDataListView.DataSource = PaperController.GetPapers(AccountController.User);
             papersDataListView.AutoResizeColumns();
@@ -32,6 +36,9 @@ namespace Magazine.View {
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
             if (selectedPaper == null) { return; }
             submissionsDataListView.DataSource = PaperController.GetSubmissions(selectedPaper);
+            if(StatusUtility.Name(selectedPaper.STATUS_id)=="Needs attention") {
+                submissionsTableLayoutPanel.RowStyles[2].Height = 150;
+            }
         }
 
         private void submissionsDataListView_SelectionChanged(object sender, EventArgs e) {

@@ -49,6 +49,7 @@
             this.userToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPaperButton = new System.Windows.Forms.Button();
+            this.statusColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.uploadControl = new Magazine.Controls.UploadControl();
             this.formTableLayoutPanel.SuspendLayout();
@@ -113,10 +114,12 @@
             // 
             this.papersDataListView.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.papersDataListView.AllColumns.Add(this.titleColumn);
+            this.papersDataListView.AllColumns.Add(this.statusColumn);
             this.papersDataListView.AutoGenerateColumns = false;
             this.papersDataListView.CellEditUseWholeCell = false;
             this.papersDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.titleColumn});
+            this.titleColumn,
+            this.statusColumn});
             this.papersDataListView.Cursor = System.Windows.Forms.Cursors.Default;
             this.papersDataListView.DataSource = null;
             this.papersDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -153,6 +156,7 @@
             this.iconsImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.iconsImageList.Images.SetKeyName(0, "paper.png");
             this.iconsImageList.Images.SetKeyName(1, "date.png");
+            this.iconsImageList.Images.SetKeyName(2, "status_inprogress.png");
             // 
             // submissionsTableLayoutPanel
             // 
@@ -165,9 +169,9 @@
             this.submissionsTableLayoutPanel.Location = new System.Drawing.Point(363, 3);
             this.submissionsTableLayoutPanel.Name = "submissionsTableLayoutPanel";
             this.submissionsTableLayoutPanel.RowCount = 3;
-            this.submissionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.submissionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.submissionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.submissionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.submissionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.submissionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.submissionsTableLayoutPanel.Size = new System.Drawing.Size(355, 365);
             this.submissionsTableLayoutPanel.TabIndex = 1;
             // 
@@ -177,7 +181,7 @@
             this.submissionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.submissionsGroupBox.Location = new System.Drawing.Point(3, 3);
             this.submissionsGroupBox.Name = "submissionsGroupBox";
-            this.submissionsGroupBox.Size = new System.Drawing.Size(349, 115);
+            this.submissionsGroupBox.Size = new System.Drawing.Size(349, 101);
             this.submissionsGroupBox.TabIndex = 0;
             this.submissionsGroupBox.TabStop = false;
             this.submissionsGroupBox.Text = "Submissions";
@@ -200,7 +204,7 @@
             this.submissionsDataListView.MultiSelect = false;
             this.submissionsDataListView.Name = "submissionsDataListView";
             this.submissionsDataListView.ShowGroups = false;
-            this.submissionsDataListView.Size = new System.Drawing.Size(343, 96);
+            this.submissionsDataListView.Size = new System.Drawing.Size(343, 82);
             this.submissionsDataListView.SmallImageList = this.iconsImageList;
             this.submissionsDataListView.TabIndex = 0;
             this.submissionsDataListView.UseCompatibleStateImageBehavior = false;
@@ -218,9 +222,9 @@
             // 
             this.editorCommentGroupBox.Controls.Add(this.editorCommentTextBox);
             this.editorCommentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editorCommentGroupBox.Location = new System.Drawing.Point(3, 124);
+            this.editorCommentGroupBox.Location = new System.Drawing.Point(3, 110);
             this.editorCommentGroupBox.Name = "editorCommentGroupBox";
-            this.editorCommentGroupBox.Size = new System.Drawing.Size(349, 115);
+            this.editorCommentGroupBox.Size = new System.Drawing.Size(349, 101);
             this.editorCommentGroupBox.TabIndex = 1;
             this.editorCommentGroupBox.TabStop = false;
             this.editorCommentGroupBox.Text = "Editor comment";
@@ -232,7 +236,7 @@
             this.editorCommentTextBox.Multiline = true;
             this.editorCommentTextBox.Name = "editorCommentTextBox";
             this.editorCommentTextBox.ReadOnly = true;
-            this.editorCommentTextBox.Size = new System.Drawing.Size(343, 96);
+            this.editorCommentTextBox.Size = new System.Drawing.Size(343, 82);
             this.editorCommentTextBox.TabIndex = 0;
             this.editorCommentTextBox.Text = "Editors opinion";
             // 
@@ -240,9 +244,9 @@
             // 
             this.uploadGroupBox.Controls.Add(this.uploadTableLayoutPanel);
             this.uploadGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uploadGroupBox.Location = new System.Drawing.Point(3, 245);
+            this.uploadGroupBox.Location = new System.Drawing.Point(3, 217);
             this.uploadGroupBox.Name = "uploadGroupBox";
-            this.uploadGroupBox.Size = new System.Drawing.Size(349, 117);
+            this.uploadGroupBox.Size = new System.Drawing.Size(349, 145);
             this.uploadGroupBox.TabIndex = 2;
             this.uploadGroupBox.TabStop = false;
             this.uploadGroupBox.Text = "Upload";
@@ -259,13 +263,13 @@
             this.uploadTableLayoutPanel.RowCount = 2;
             this.uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.uploadTableLayoutPanel.Size = new System.Drawing.Size(343, 98);
+            this.uploadTableLayoutPanel.Size = new System.Drawing.Size(343, 126);
             this.uploadTableLayoutPanel.TabIndex = 0;
             // 
             // uploadProgressBar
             // 
             this.uploadProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uploadProgressBar.Location = new System.Drawing.Point(3, 81);
+            this.uploadProgressBar.Location = new System.Drawing.Point(3, 109);
             this.uploadProgressBar.Name = "uploadProgressBar";
             this.uploadProgressBar.Size = new System.Drawing.Size(337, 14);
             this.uploadProgressBar.TabIndex = 1;
@@ -293,13 +297,13 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.paperToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // paperToolStripMenuItem
             // 
             this.paperToolStripMenuItem.Name = "paperToolStripMenuItem";
-            this.paperToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.paperToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.paperToolStripMenuItem.Text = "Paper";
             this.paperToolStripMenuItem.Click += new System.EventHandler(this.paperToolStripMenuItem_Click);
             // 
@@ -354,6 +358,12 @@
             this.addPaperButton.UseVisualStyleBackColor = true;
             this.addPaperButton.Click += new System.EventHandler(this.addPaperButton_Click);
             // 
+            // statusColumn
+            // 
+            this.statusColumn.AspectName = "STATUS_id";
+            this.statusColumn.IsEditable = false;
+            this.statusColumn.Text = "Status";
+            // 
             // papersSearchPromptTextBox
             // 
             this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -372,7 +382,7 @@
             this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uploadControl.Location = new System.Drawing.Point(3, 3);
             this.uploadControl.Name = "uploadControl";
-            this.uploadControl.Size = new System.Drawing.Size(337, 72);
+            this.uploadControl.Size = new System.Drawing.Size(337, 100);
             this.uploadControl.TabIndex = 0;
             this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
             // 
@@ -437,5 +447,6 @@
         private System.Windows.Forms.ToolStripMenuItem paperToolStripMenuItem;
         private BrightIdeasSoftware.OLVColumn timestampColumn;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private BrightIdeasSoftware.OLVColumn statusColumn;
     }
 }
