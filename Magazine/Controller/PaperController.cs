@@ -27,5 +27,14 @@ namespace Magazine.Controller {
             AccountController.entities.files.Add(f);
             AccountController.entities.SaveChanges();
         }
+
+        public static void AddPaper(string title, string filePath) {
+            paper p = new paper();
+            p.Title = title;
+            p.STATUS_id = 1;
+            p.author_user = AccountController.User;
+            AccountController.entities.papers.Add(p);
+            UploadSubmission(p, filePath);
+        }
     }
 }

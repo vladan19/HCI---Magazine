@@ -73,5 +73,17 @@ namespace Magazine.View {
                 return x != null && (myPaper.Title.ToLower().Contains(papersSearchPromptTextBox.Text.ToLower()));
             });
         }
+
+        private void addPaperButton_Click(object sender, EventArgs e) {
+            AddPaperForm apf = new AddPaperForm();
+            var result = apf.ShowDialog();
+            if (result == DialogResult.OK) {
+                papersDataListView.DataSource = PaperController.GetPapers(AccountController.User);
+            }
+        }
+
+        private void paperToolStripMenuItem_Click(object sender, EventArgs e) {
+            addPaperButton.PerformClick();
+        }
     }
 }

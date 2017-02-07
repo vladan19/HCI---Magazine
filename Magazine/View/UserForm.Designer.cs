@@ -31,7 +31,6 @@
             this.papersDataListView = new BrightIdeasSoftware.DataListView();
             this.titleColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
-            this.addPaperButton = new System.Windows.Forms.Button();
             this.submissionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.submissionsGroupBox = new System.Windows.Forms.GroupBox();
             this.submissionsDataListView = new BrightIdeasSoftware.DataListView();
@@ -46,9 +45,10 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.userToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.addPaperButton = new System.Windows.Forms.Button();
             this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.uploadControl = new Magazine.Controls.UploadControl();
             this.formTableLayoutPanel.SuspendLayout();
@@ -153,17 +153,6 @@
             this.iconsImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.iconsImageList.Images.SetKeyName(0, "paper.png");
             this.iconsImageList.Images.SetKeyName(1, "date.png");
-            // 
-            // addPaperButton
-            // 
-            this.addPaperButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addPaperButton.Image = global::Magazine.Properties.Resources.add;
-            this.addPaperButton.Location = new System.Drawing.Point(315, 314);
-            this.addPaperButton.Name = "addPaperButton";
-            this.addPaperButton.Size = new System.Drawing.Size(30, 29);
-            this.addPaperButton.TabIndex = 3;
-            this.addPaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.addPaperButton.UseVisualStyleBackColor = true;
             // 
             // submissionsTableLayoutPanel
             // 
@@ -304,14 +293,15 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.paperToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // paperToolStripMenuItem
             // 
             this.paperToolStripMenuItem.Name = "paperToolStripMenuItem";
-            this.paperToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.paperToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.paperToolStripMenuItem.Text = "Paper";
+            this.paperToolStripMenuItem.Click += new System.EventHandler(this.paperToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -326,6 +316,11 @@
             this.toolStrip1.Size = new System.Drawing.Size(314, 24);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "\"PDF files (*.pdf)|*.pdf|All files (*.*)|*.*\";";
             // 
             // userToolStripDropDownButton
             // 
@@ -347,10 +342,17 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // openFileDialog
+            // addPaperButton
             // 
-            this.openFileDialog.FileName = "openFileDialog";
-            this.openFileDialog.Filter = "\"PDF files (*.pdf)|*.pdf|All files (*.*)|*.*\";";
+            this.addPaperButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.addPaperButton.Image = global::Magazine.Properties.Resources.add;
+            this.addPaperButton.Location = new System.Drawing.Point(315, 314);
+            this.addPaperButton.Name = "addPaperButton";
+            this.addPaperButton.Size = new System.Drawing.Size(30, 29);
+            this.addPaperButton.TabIndex = 3;
+            this.addPaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.addPaperButton.UseVisualStyleBackColor = true;
+            this.addPaperButton.Click += new System.EventHandler(this.addPaperButton_Click);
             // 
             // papersSearchPromptTextBox
             // 
