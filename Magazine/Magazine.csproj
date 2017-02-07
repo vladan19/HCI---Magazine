@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Controller\AccountController.cs" />
     <Compile Include="Controller\FormUtility.cs" />
+    <Compile Include="Controller\PaperController.cs" />
     <Compile Include="Controller\PasswordUtility.cs" />
     <Compile Include="Controls\PromptTextBox.cs">
       <SubType>Component</SubType>
@@ -191,6 +192,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\MagazineModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MagazineModel.edmx</DependentUpon>
@@ -201,13 +211,6 @@
       <DependentUpon>MagazineModel.edmx</DependentUpon>
       <LastGenOutput>MagazineModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\logout.png" />
-    <None Include="Resources\user.png" />
-    <None Include="Resources\download.png" />
-    <None Include="Resources\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

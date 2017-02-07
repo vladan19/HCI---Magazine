@@ -31,7 +31,7 @@
           <Property Name="Title" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="Author" Type="int" Nullable="false" />
           <Property Name="DateOfPublishing" Type="date" />
-          <Property Name="Editor" Type="int" Nullable="false" />
+          <Property Name="Editor" Type="int" />
           <Property Name="STATUS_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="review">
@@ -57,8 +57,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Password" Type="binary" MaxLength="160" Nullable="false" />
-          <Property Name="Salt" Type="binary" MaxLength="128" Nullable="false" />
+          <Property Name="Password" Type="binary" MaxLength="20" Nullable="false" />
+          <Property Name="Salt" Type="binary" MaxLength="10" Nullable="false" />
           <Property Name="Firstname" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="Lastname" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="GROUP_id" Type="int" Nullable="false" />
@@ -101,7 +101,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_PAPER_USER2">
-          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="paper" Type="Self.paper" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="user">
@@ -234,7 +234,7 @@
           <Property Name="Title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Author" Type="Int32" Nullable="false" />
           <Property Name="DateOfPublishing" Type="DateTime" />
-          <Property Name="Editor" Type="Int32" Nullable="false" />
+          <Property Name="Editor" Type="Int32" />
           <Property Name="STATUS_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="files" Relationship="Self.fk_FILE_PAPER1" FromRole="paper" ToRole="file" />
           <NavigationProperty Name="status" Relationship="Self.fk_PAPER_STATUS1" FromRole="paper" ToRole="status" />
@@ -341,7 +341,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_PAPER_USER2">
-          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="paper" Type="Self.paper" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="user">

@@ -24,7 +24,7 @@ namespace Magazine.Model
         public string Title { get; set; }
         public int Author { get; set; }
         public Nullable<System.DateTime> DateOfPublishing { get; set; }
-        public int Editor { get; set; }
+        public Nullable<int> Editor { get; set; }
         public int STATUS_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
