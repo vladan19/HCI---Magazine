@@ -130,6 +130,12 @@
     <Compile Include="View\EditorForm.Designer.cs">
       <DependentUpon>EditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HelperForm.Designer.cs">
+      <DependentUpon>HelperForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,12 @@
     </Compile>
     <EmbeddedResource Include="View\AddPaperForm.resx">
       <DependentUpon>AddPaperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditorForm.resx">
+      <DependentUpon>EditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HelperForm.resx">
+      <DependentUpon>HelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

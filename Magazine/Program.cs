@@ -31,6 +31,7 @@ namespace Magazine {
                     Application.Run(new ReviewerForm());
                 }
             }
+            //Application.Run(new HelperForm());
         }
     }
 }
