@@ -22,7 +22,7 @@ namespace Magazine.View {
             string email = emailTextBox.Text;
             string username = usernameTextBox.Text;
             string password = passwordTextBox.Text;
-            AccountController.RegisterUser(firstname, lastname, email, username, password, "Editor");
+            AccountController.RegisterUser(firstname, lastname, email, username, password, "Reviewer");
         }
     }
 }

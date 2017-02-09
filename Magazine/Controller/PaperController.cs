@@ -50,5 +50,78 @@ namespace Magazine.Controller {
         public static byte[] GetFile(int id) {
             return AccountController.entities.files.Where(f => f.id == id).Select(f => f.Content).First();
         }
+
+        public static void SendToReview(paper paper, string comment) {
+            int idFile = GetLatestVersion(paper.id);
+            if (paper != null) {
+                paper.status = AccountController.entities.status.Where(s => s.Name == "On review").First();
+                paper.editor_user = AccountController.User;
+            }
+            var file = AccountController.entities.files.Where(c => c.id == idFile).First();
+            if (file != null) {
+                file.EditorComment = comment;
+            }
+            foreach (var item in AccountController.entities.users.Where(u=>u.GROUP_id==3).ToList()) {
+                review r = new review();
+                r.user = item;
+                r.FILE_id = idFile;
+                r.status = AccountController.entities.status.Where(s => s.Name == "On review").First();
+                AccountController.entities.reviews.Add(r);
+            }
+            AccountController.entities.SaveChanges();
+        }
+
+        public static void ReturnToAuthor(paper paper, string comment) {
+            int idFile = GetLatestVersion(paper.id);
+            if (paper != null) {
+                paper.status = AccountController.entities.status.Where(s => s.Name == "Returned").First();
+                paper.editor_user = AccountController.User;
+            }
+            var file = AccountController.entities.files.Where(c => c.id == idFile).First();
+            if (file != null) {
+                file.EditorComment = comment;
+            }
+            AccountController.entities.SaveChanges();
+        }
+
+        public static void ReturnToFinalEdit(paper paper, string comment) {
+            int idFile = GetLatestVersion(paper.id);
+            if (paper != null) {
+                paper.status = AccountController.entities.status.Where(s => s.Name == "Returned to final edit").First();
+                paper.editor_user = AccountController.User;
+            }
+            var file = AccountController.entities.files.Where(c => c.id == idFile).First();
+            if (file != null) {
+                file.EditorComment = comment;
+            }
+            AccountController.entities.SaveChanges();
+        }
+
+        public static void Publish(paper paper, string comment) {
+            int idFile = GetLatestVersion(paper.id);
+            if (paper != null) {
+                paper.status = AccountController.entities.status.Where(s => s.Name == "Published").First();
+                paper.DateOfPublishing = DateTime.Now;
+                paper.editor_user = AccountController.User;
+            }
+            var file = AccountController.entities.files.Where(c => c.id == idFile).First();
+            if (file != null) {
+                file.EditorComment = comment;
+            }
+            AccountController.entities.SaveChanges();
+        }
+
+        public static void Reject(paper paper, string comment) {
+            int idFile = GetLatestVersion(paper.id);
+            if (paper != null) {
+                paper.status = AccountController.entities.status.Where(s => s.Name == "Rejected").First();
+                paper.editor_user = AccountController.User;
+            }
+            var file = AccountController.entities.files.Where(c => c.id == idFile).First();
+            if (file != null) {
+                file.EditorComment = comment;
+            }
+            AccountController.entities.SaveChanges();
+        }
     }
 }
