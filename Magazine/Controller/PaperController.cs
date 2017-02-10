@@ -124,5 +124,16 @@ namespace Magazine.Controller {
             }
             AccountController.entities.SaveChanges();
         }
+
+        public static void ReviewCompleted(review rev, string comment, string status) {
+            rev.Comment = comment;
+            if (status == "Accept") {
+                rev.status = AccountController.entities.status.Where(s => s.Name == "Review passed").First();
+            }
+            else if(status == "Reject") {
+                rev.status = AccountController.entities.status.Where(s => s.Name == "Review failed").First();
+            }
+            AccountController.entities.SaveChanges();
+        }
     }
 }

@@ -236,6 +236,7 @@
       <DependentUpon>MagazineModel.edmx</DependentUpon>
       <LastGenOutput>MagazineModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

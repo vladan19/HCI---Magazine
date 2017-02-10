@@ -27,37 +27,39 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReviewerForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStrip = new System.Windows.Forms.ToolStrip();
-            this.userToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.papersGroupBox = new System.Windows.Forms.GroupBox();
+            this.reviewsGroupBox = new System.Windows.Forms.GroupBox();
             this.papersTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.newRadioButton = new System.Windows.Forms.RadioButton();
             this.completedRadioButton = new System.Windows.Forms.RadioButton();
-            this.papersDataListView = new BrightIdeasSoftware.DataListView();
-            this.reviewGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.commentToolStrip = new System.Windows.Forms.ToolStrip();
-            this.commentToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.acceptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rejectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reviewTextBox = new System.Windows.Forms.TextBox();
-            this.saveButton = new System.Windows.Forms.Button();
+            this.reviewsDataListView = new BrightIdeasSoftware.DataListView();
             this.titleColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.authorColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.statusColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.iconImageList = new System.Windows.Forms.ImageList(this.components);
-            this.searchPapersPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
+            this.reviewGroupBox = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.commentToolStrip = new System.Windows.Forms.ToolStrip();
+            this.reviewTextBox = new System.Windows.Forms.TextBox();
             this.openButton = new System.Windows.Forms.Button();
+            this.allRadioButton = new System.Windows.Forms.RadioButton();
+            this.commentToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.acceptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rejectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paperLabel = new System.Windows.Forms.Label();
+            this.searchPapersPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.menuStrip1.SuspendLayout();
             this.userToolStrip.SuspendLayout();
             this.reviewTableLayoutPanel.SuspendLayout();
-            this.papersGroupBox.SuspendLayout();
+            this.reviewsGroupBox.SuspendLayout();
             this.papersTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.papersDataListView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsDataListView)).BeginInit();
             this.reviewGroupBox.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
             this.commentToolStrip.SuspendLayout();
@@ -81,12 +83,6 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            // 
             // userToolStrip
             // 
             this.userToolStrip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -101,32 +97,12 @@
             this.userToolStrip.TabIndex = 3;
             this.userToolStrip.Text = "toolStrip1";
             // 
-            // userToolStripDropDownButton
-            // 
-            this.userToolStripDropDownButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem});
-            this.userToolStripDropDownButton.Image = global::Magazine.Properties.Resources.user;
-            this.userToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userToolStripDropDownButton.Name = "userToolStripDropDownButton";
-            this.userToolStripDropDownButton.Size = new System.Drawing.Size(89, 21);
-            this.userToolStripDropDownButton.Text = "Username";
-            this.userToolStripDropDownButton.ToolTipText = "userToolStripDropDownButton";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Image = global::Magazine.Properties.Resources.logout;
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
             // reviewTableLayoutPanel
             // 
             this.reviewTableLayoutPanel.ColumnCount = 2;
             this.reviewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.reviewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.reviewTableLayoutPanel.Controls.Add(this.papersGroupBox, 0, 0);
+            this.reviewTableLayoutPanel.Controls.Add(this.reviewsGroupBox, 0, 0);
             this.reviewTableLayoutPanel.Controls.Add(this.reviewGroupBox, 1, 0);
             this.reviewTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reviewTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
@@ -137,26 +113,28 @@
             this.reviewTableLayoutPanel.Size = new System.Drawing.Size(731, 309);
             this.reviewTableLayoutPanel.TabIndex = 4;
             // 
-            // papersGroupBox
+            // reviewsGroupBox
             // 
-            this.papersGroupBox.Controls.Add(this.papersTableLayoutPanel);
-            this.papersGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.papersGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.papersGroupBox.Name = "papersGroupBox";
-            this.papersGroupBox.Size = new System.Drawing.Size(359, 303);
-            this.papersGroupBox.TabIndex = 0;
-            this.papersGroupBox.TabStop = false;
-            this.papersGroupBox.Text = "Papers";
+            this.reviewsGroupBox.Controls.Add(this.papersTableLayoutPanel);
+            this.reviewsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewsGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.reviewsGroupBox.Name = "reviewsGroupBox";
+            this.reviewsGroupBox.Size = new System.Drawing.Size(359, 303);
+            this.reviewsGroupBox.TabIndex = 0;
+            this.reviewsGroupBox.TabStop = false;
+            this.reviewsGroupBox.Text = "Reviews";
             // 
             // papersTableLayoutPanel
             // 
-            this.papersTableLayoutPanel.ColumnCount = 2;
+            this.papersTableLayoutPanel.ColumnCount = 3;
             this.papersTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.papersTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.papersTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.papersTableLayoutPanel.Controls.Add(this.newRadioButton, 1, 0);
             this.papersTableLayoutPanel.Controls.Add(this.completedRadioButton, 0, 0);
             this.papersTableLayoutPanel.Controls.Add(this.searchPapersPromptTextBox, 0, 1);
-            this.papersTableLayoutPanel.Controls.Add(this.papersDataListView, 0, 2);
+            this.papersTableLayoutPanel.Controls.Add(this.reviewsDataListView, 0, 2);
+            this.papersTableLayoutPanel.Controls.Add(this.allRadioButton, 2, 0);
             this.papersTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.papersTableLayoutPanel.Location = new System.Drawing.Point(3, 16);
             this.papersTableLayoutPanel.Name = "papersTableLayoutPanel";
@@ -170,154 +148,63 @@
             // newRadioButton
             // 
             this.newRadioButton.AutoSize = true;
-            this.newRadioButton.Checked = true;
             this.newRadioButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.newRadioButton.Location = new System.Drawing.Point(303, 3);
+            this.newRadioButton.Location = new System.Drawing.Point(258, 3);
             this.newRadioButton.Name = "newRadioButton";
             this.newRadioButton.Size = new System.Drawing.Size(47, 19);
             this.newRadioButton.TabIndex = 0;
-            this.newRadioButton.TabStop = true;
             this.newRadioButton.Text = "New";
             this.newRadioButton.UseVisualStyleBackColor = true;
+            this.newRadioButton.CheckedChanged += new System.EventHandler(this.newRadioButton_CheckedChanged);
             // 
             // completedRadioButton
             // 
             this.completedRadioButton.AutoSize = true;
             this.completedRadioButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.completedRadioButton.Location = new System.Drawing.Point(220, 3);
+            this.completedRadioButton.Location = new System.Drawing.Point(175, 3);
             this.completedRadioButton.Name = "completedRadioButton";
             this.completedRadioButton.Size = new System.Drawing.Size(75, 19);
             this.completedRadioButton.TabIndex = 1;
-            this.completedRadioButton.TabStop = true;
             this.completedRadioButton.Text = "Completed";
             this.completedRadioButton.UseVisualStyleBackColor = true;
+            this.completedRadioButton.CheckedChanged += new System.EventHandler(this.completedRadioButton_CheckedChanged);
             // 
-            // papersDataListView
+            // reviewsDataListView
             // 
-            this.papersDataListView.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.papersDataListView.AllColumns.Add(this.titleColumn);
-            this.papersDataListView.AllColumns.Add(this.authorColumn);
-            this.papersDataListView.AllColumns.Add(this.dateColumn);
-            this.papersDataListView.AllColumns.Add(this.statusColumn);
-            this.papersDataListView.AutoGenerateColumns = false;
-            this.papersDataListView.CellEditUseWholeCell = false;
-            this.papersDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.reviewsDataListView.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.reviewsDataListView.AllColumns.Add(this.titleColumn);
+            this.reviewsDataListView.AllColumns.Add(this.authorColumn);
+            this.reviewsDataListView.AllColumns.Add(this.dateColumn);
+            this.reviewsDataListView.AllColumns.Add(this.statusColumn);
+            this.reviewsDataListView.AutoGenerateColumns = false;
+            this.reviewsDataListView.CellEditUseWholeCell = false;
+            this.reviewsDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.titleColumn,
             this.authorColumn,
             this.dateColumn,
             this.statusColumn});
-            this.papersTableLayoutPanel.SetColumnSpan(this.papersDataListView, 2);
-            this.papersDataListView.Cursor = System.Windows.Forms.Cursors.Default;
-            this.papersDataListView.DataSource = null;
-            this.papersDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.papersDataListView.FullRowSelect = true;
-            this.papersDataListView.GridLines = true;
-            this.papersDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.papersDataListView.HideSelection = false;
-            this.papersDataListView.Location = new System.Drawing.Point(3, 53);
-            this.papersDataListView.MultiSelect = false;
-            this.papersDataListView.Name = "papersDataListView";
-            this.papersDataListView.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.papersDataListView.SelectedForeColor = System.Drawing.Color.Black;
-            this.papersDataListView.ShowGroups = false;
-            this.papersDataListView.Size = new System.Drawing.Size(347, 228);
-            this.papersDataListView.SmallImageList = this.iconImageList;
-            this.papersDataListView.TabIndex = 3;
-            this.papersDataListView.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(235)))), ((int)(((byte)(249)))));
-            this.papersDataListView.UseCompatibleStateImageBehavior = false;
-            this.papersDataListView.UseFiltering = true;
-            this.papersDataListView.View = System.Windows.Forms.View.Details;
-            // 
-            // reviewGroupBox
-            // 
-            this.reviewGroupBox.Controls.Add(this.tableLayoutPanel);
-            this.reviewGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reviewGroupBox.Location = new System.Drawing.Point(368, 3);
-            this.reviewGroupBox.Name = "reviewGroupBox";
-            this.reviewGroupBox.Size = new System.Drawing.Size(360, 303);
-            this.reviewGroupBox.TabIndex = 1;
-            this.reviewGroupBox.TabStop = false;
-            this.reviewGroupBox.Text = "Review";
-            // 
-            // tableLayoutPanel
-            // 
-            this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel.Controls.Add(this.saveButton, 1, 2);
-            this.tableLayoutPanel.Controls.Add(this.commentToolStrip, 0, 2);
-            this.tableLayoutPanel.Controls.Add(this.reviewTextBox, 0, 1);
-            this.tableLayoutPanel.Controls.Add(this.openButton, 1, 0);
-            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 3;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(354, 284);
-            this.tableLayoutPanel.TabIndex = 0;
-            // 
-            // commentToolStrip
-            // 
-            this.commentToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commentToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.commentToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.commentToolStripDropDownButton});
-            this.commentToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.commentToolStrip.Location = new System.Drawing.Point(0, 254);
-            this.commentToolStrip.Name = "commentToolStrip";
-            this.commentToolStrip.Size = new System.Drawing.Size(304, 30);
-            this.commentToolStrip.TabIndex = 3;
-            this.commentToolStrip.Text = "toolStrip1";
-            // 
-            // commentToolStripDropDownButton
-            // 
-            this.commentToolStripDropDownButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.commentToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.commentToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.acceptToolStripMenuItem,
-            this.rejectToolStripMenuItem});
-            this.commentToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("commentToolStripDropDownButton.Image")));
-            this.commentToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.commentToolStripDropDownButton.Name = "commentToolStripDropDownButton";
-            this.commentToolStripDropDownButton.Size = new System.Drawing.Size(122, 27);
-            this.commentToolStripDropDownButton.Text = "Select review status";
-            this.commentToolStripDropDownButton.ToolTipText = "Select review status";
-            // 
-            // acceptToolStripMenuItem
-            // 
-            this.acceptToolStripMenuItem.Name = "acceptToolStripMenuItem";
-            this.acceptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.acceptToolStripMenuItem.Text = "Accept";
-            this.acceptToolStripMenuItem.Click += new System.EventHandler(this.acceptToolStripMenuItem_Click);
-            // 
-            // rejectToolStripMenuItem
-            // 
-            this.rejectToolStripMenuItem.Name = "rejectToolStripMenuItem";
-            this.rejectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.rejectToolStripMenuItem.Text = "Reject";
-            this.rejectToolStripMenuItem.Click += new System.EventHandler(this.rejectToolStripMenuItem_Click);
-            // 
-            // reviewTextBox
-            // 
-            this.tableLayoutPanel.SetColumnSpan(this.reviewTextBox, 2);
-            this.reviewTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reviewTextBox.Location = new System.Drawing.Point(3, 33);
-            this.reviewTextBox.Multiline = true;
-            this.reviewTextBox.Name = "reviewTextBox";
-            this.reviewTextBox.Size = new System.Drawing.Size(348, 218);
-            this.reviewTextBox.TabIndex = 0;
-            // 
-            // saveButton
-            // 
-            this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveButton.Location = new System.Drawing.Point(307, 257);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(44, 24);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
+            this.papersTableLayoutPanel.SetColumnSpan(this.reviewsDataListView, 3);
+            this.reviewsDataListView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.reviewsDataListView.DataSource = null;
+            this.reviewsDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewsDataListView.FullRowSelect = true;
+            this.reviewsDataListView.GridLines = true;
+            this.reviewsDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.reviewsDataListView.HideSelection = false;
+            this.reviewsDataListView.Location = new System.Drawing.Point(3, 53);
+            this.reviewsDataListView.MultiSelect = false;
+            this.reviewsDataListView.Name = "reviewsDataListView";
+            this.reviewsDataListView.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.reviewsDataListView.SelectedForeColor = System.Drawing.Color.Black;
+            this.reviewsDataListView.ShowGroups = false;
+            this.reviewsDataListView.Size = new System.Drawing.Size(347, 228);
+            this.reviewsDataListView.SmallImageList = this.iconImageList;
+            this.reviewsDataListView.TabIndex = 3;
+            this.reviewsDataListView.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(235)))), ((int)(((byte)(249)))));
+            this.reviewsDataListView.UseCompatibleStateImageBehavior = false;
+            this.reviewsDataListView.UseFiltering = true;
+            this.reviewsDataListView.View = System.Windows.Forms.View.Details;
+            this.reviewsDataListView.SelectionChanged += new System.EventHandler(this.papersDataListView_SelectionChanged);
             // 
             // titleColumn
             // 
@@ -366,10 +253,171 @@
             this.iconImageList.Images.SetKeyName(0, "paper.png");
             this.iconImageList.Images.SetKeyName(1, "author.png");
             this.iconImageList.Images.SetKeyName(2, "date.png");
+            this.iconImageList.Images.SetKeyName(3, "accept.png");
+            this.iconImageList.Images.SetKeyName(4, "reject.png");
+            this.iconImageList.Images.SetKeyName(5, "warning.png");
+            // 
+            // reviewGroupBox
+            // 
+            this.reviewGroupBox.Controls.Add(this.tableLayoutPanel);
+            this.reviewGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewGroupBox.Location = new System.Drawing.Point(368, 3);
+            this.reviewGroupBox.Name = "reviewGroupBox";
+            this.reviewGroupBox.Size = new System.Drawing.Size(360, 303);
+            this.reviewGroupBox.TabIndex = 1;
+            this.reviewGroupBox.TabStop = false;
+            this.reviewGroupBox.Text = "Review";
+            // 
+            // tableLayoutPanel
+            // 
+            this.tableLayoutPanel.ColumnCount = 2;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel.Controls.Add(this.saveButton, 1, 2);
+            this.tableLayoutPanel.Controls.Add(this.commentToolStrip, 0, 2);
+            this.tableLayoutPanel.Controls.Add(this.reviewTextBox, 0, 1);
+            this.tableLayoutPanel.Controls.Add(this.openButton, 1, 0);
+            this.tableLayoutPanel.Controls.Add(this.paperLabel, 0, 0);
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 3;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(354, 284);
+            this.tableLayoutPanel.TabIndex = 0;
+            // 
+            // saveButton
+            // 
+            this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.saveButton.Location = new System.Drawing.Point(307, 257);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(44, 24);
+            this.saveButton.TabIndex = 1;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // commentToolStrip
+            // 
+            this.commentToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.commentToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.commentToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.commentToolStripDropDownButton});
+            this.commentToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.commentToolStrip.Location = new System.Drawing.Point(0, 254);
+            this.commentToolStrip.Name = "commentToolStrip";
+            this.commentToolStrip.Size = new System.Drawing.Size(304, 30);
+            this.commentToolStrip.TabIndex = 3;
+            this.commentToolStrip.Text = "toolStrip1";
+            // 
+            // reviewTextBox
+            // 
+            this.tableLayoutPanel.SetColumnSpan(this.reviewTextBox, 2);
+            this.reviewTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewTextBox.Location = new System.Drawing.Point(3, 63);
+            this.reviewTextBox.Multiline = true;
+            this.reviewTextBox.Name = "reviewTextBox";
+            this.reviewTextBox.Size = new System.Drawing.Size(348, 188);
+            this.reviewTextBox.TabIndex = 0;
+            // 
+            // openButton
+            // 
+            this.openButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.openButton.Location = new System.Drawing.Point(307, 18);
+            this.openButton.Name = "openButton";
+            this.openButton.Size = new System.Drawing.Size(44, 24);
+            this.openButton.TabIndex = 4;
+            this.openButton.Text = "Open";
+            this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
+            // 
+            // allRadioButton
+            // 
+            this.allRadioButton.AutoSize = true;
+            this.allRadioButton.Checked = true;
+            this.allRadioButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.allRadioButton.Location = new System.Drawing.Point(314, 3);
+            this.allRadioButton.Name = "allRadioButton";
+            this.allRadioButton.Size = new System.Drawing.Size(36, 19);
+            this.allRadioButton.TabIndex = 4;
+            this.allRadioButton.TabStop = true;
+            this.allRadioButton.Text = "All";
+            this.allRadioButton.UseVisualStyleBackColor = true;
+            this.allRadioButton.CheckedChanged += new System.EventHandler(this.allRadioButton_CheckedChanged);
+            // 
+            // commentToolStripDropDownButton
+            // 
+            this.commentToolStripDropDownButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.commentToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.commentToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acceptToolStripMenuItem,
+            this.rejectToolStripMenuItem});
+            this.commentToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("commentToolStripDropDownButton.Image")));
+            this.commentToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.commentToolStripDropDownButton.Name = "commentToolStripDropDownButton";
+            this.commentToolStripDropDownButton.Size = new System.Drawing.Size(122, 27);
+            this.commentToolStripDropDownButton.Text = "Select review status";
+            this.commentToolStripDropDownButton.ToolTipText = "Select review status";
+            // 
+            // acceptToolStripMenuItem
+            // 
+            this.acceptToolStripMenuItem.Name = "acceptToolStripMenuItem";
+            this.acceptToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.acceptToolStripMenuItem.Text = "Accept";
+            this.acceptToolStripMenuItem.Click += new System.EventHandler(this.acceptToolStripMenuItem_Click);
+            // 
+            // rejectToolStripMenuItem
+            // 
+            this.rejectToolStripMenuItem.Name = "rejectToolStripMenuItem";
+            this.rejectToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.rejectToolStripMenuItem.Text = "Reject";
+            this.rejectToolStripMenuItem.Click += new System.EventHandler(this.rejectToolStripMenuItem_Click);
+            // 
+            // userToolStripDropDownButton
+            // 
+            this.userToolStripDropDownButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.userToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem});
+            this.userToolStripDropDownButton.Image = global::Magazine.Properties.Resources.user;
+            this.userToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.userToolStripDropDownButton.Name = "userToolStripDropDownButton";
+            this.userToolStripDropDownButton.Size = new System.Drawing.Size(89, 21);
+            this.userToolStripDropDownButton.Text = "Username";
+            this.userToolStripDropDownButton.ToolTipText = "userToolStripDropDownButton";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Image = global::Magazine.Properties.Resources.logout;
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::Magazine.Properties.Resources.refresh1;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // paperLabel
+            // 
+            this.paperLabel.AutoSize = true;
+            this.paperLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.paperLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paperLabel.Location = new System.Drawing.Point(3, 0);
+            this.paperLabel.Name = "paperLabel";
+            this.paperLabel.Size = new System.Drawing.Size(51, 60);
+            this.paperLabel.TabIndex = 5;
+            this.paperLabel.Text = "Paper";
+            this.paperLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // searchPapersPromptTextBox
             // 
-            this.papersTableLayoutPanel.SetColumnSpan(this.searchPapersPromptTextBox, 2);
+            this.papersTableLayoutPanel.SetColumnSpan(this.searchPapersPromptTextBox, 3);
             this.searchPapersPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchPapersPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.searchPapersPromptTextBox.Location = new System.Drawing.Point(3, 28);
@@ -379,16 +427,6 @@
             this.searchPapersPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
             this.searchPapersPromptTextBox.WaterMarkText = "Type here to search";
             this.searchPapersPromptTextBox.TextChanged += new System.EventHandler(this.searchPapersPromptTextBox_TextChanged);
-            // 
-            // openButton
-            // 
-            this.openButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.openButton.Location = new System.Drawing.Point(307, 3);
-            this.openButton.Name = "openButton";
-            this.openButton.Size = new System.Drawing.Size(44, 24);
-            this.openButton.TabIndex = 4;
-            this.openButton.Text = "Open";
-            this.openButton.UseVisualStyleBackColor = true;
             // 
             // ReviewerForm
             // 
@@ -406,10 +444,10 @@
             this.userToolStrip.ResumeLayout(false);
             this.userToolStrip.PerformLayout();
             this.reviewTableLayoutPanel.ResumeLayout(false);
-            this.papersGroupBox.ResumeLayout(false);
+            this.reviewsGroupBox.ResumeLayout(false);
             this.papersTableLayoutPanel.ResumeLayout(false);
             this.papersTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.papersDataListView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsDataListView)).EndInit();
             this.reviewGroupBox.ResumeLayout(false);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
@@ -429,12 +467,12 @@
         private System.Windows.Forms.ToolStripDropDownButton userToolStripDropDownButton;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel reviewTableLayoutPanel;
-        private System.Windows.Forms.GroupBox papersGroupBox;
+        private System.Windows.Forms.GroupBox reviewsGroupBox;
         private System.Windows.Forms.TableLayoutPanel papersTableLayoutPanel;
         private System.Windows.Forms.RadioButton newRadioButton;
         private System.Windows.Forms.RadioButton completedRadioButton;
         private Khronos_PMS.View.CustomControls.PromptTextBox searchPapersPromptTextBox;
-        private BrightIdeasSoftware.DataListView papersDataListView;
+        private BrightIdeasSoftware.DataListView reviewsDataListView;
         private System.Windows.Forms.GroupBox reviewGroupBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.TextBox reviewTextBox;
@@ -449,5 +487,7 @@
         private BrightIdeasSoftware.OLVColumn statusColumn;
         private System.Windows.Forms.ImageList iconImageList;
         private System.Windows.Forms.Button openButton;
+        private System.Windows.Forms.RadioButton allRadioButton;
+        private System.Windows.Forms.Label paperLabel;
     }
 }
