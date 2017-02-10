@@ -143,6 +143,7 @@
             this.titleColumn.AspectName = "Title";
             this.titleColumn.AutoCompleteEditor = false;
             this.titleColumn.AutoCompleteEditorMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.titleColumn.FillsFreeSpace = true;
             this.titleColumn.Groupable = false;
             this.titleColumn.Hideable = false;
             this.titleColumn.ImageAspectName = "paper";
@@ -153,6 +154,7 @@
             // statusColumn
             // 
             this.statusColumn.AspectName = "STATUS_id";
+            this.statusColumn.FillsFreeSpace = true;
             this.statusColumn.IsEditable = false;
             this.statusColumn.Text = "Status";
             // 

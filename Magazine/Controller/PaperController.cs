@@ -12,10 +12,11 @@ namespace Magazine.Controller {
             if (user.GROUP_id == 1) {
                 return AccountController.entities.papers.Where(p => p.Author == user.id).ToList();
             }
-            else if (user.GROUP_id == 2) {
-                return AccountController.entities.papers.Where(p => p.Editor == null || p.Editor == user.id).ToList();
-            }
-            return AccountController.entities.papers.ToList();
+            return AccountController.entities.papers.Where(p => p.Editor == null || p.Editor == user.id).ToList();
+        }
+
+        public static List<review> GetReviewPapers(user user) {
+            return AccountController.entities.reviews.Where(r => r.USER_id == user.id).ToList();
         }
 
         public static List<file> GetSubmissions(paper p) {

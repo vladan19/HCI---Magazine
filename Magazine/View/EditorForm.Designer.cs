@@ -31,10 +31,12 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.papersGroupBox = new System.Windows.Forms.GroupBox();
             this.papersTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.papersDataListView = new BrightIdeasSoftware.DataListView();
             this.titleColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.authorColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.statusColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
             this.allRadioButton = new System.Windows.Forms.RadioButton();
             this.inProgressRadioButton = new System.Windows.Forms.RadioButton();
             this.newRadioButton = new System.Windows.Forms.RadioButton();
@@ -55,8 +57,6 @@
             this.RejectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewsGroupBox = new System.Windows.Forms.GroupBox();
             this.reviewsDataListView = new BrightIdeasSoftware.DataListView();
-            this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
-            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.editorTableLayoutPanel.SuspendLayout();
             this.controlToolStrip.SuspendLayout();
             this.papersGroupBox.SuspendLayout();
@@ -155,6 +155,19 @@
             this.papersTableLayoutPanel.Size = new System.Drawing.Size(352, 260);
             this.papersTableLayoutPanel.TabIndex = 0;
             // 
+            // papersSearchPromptTextBox
+            // 
+            this.papersTableLayoutPanel.SetColumnSpan(this.papersSearchPromptTextBox, 3);
+            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 28);
+            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
+            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(346, 20);
+            this.papersSearchPromptTextBox.TabIndex = 0;
+            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
+            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
+            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.papersSearchPromptTextBox_TextChanged);
+            // 
             // papersDataListView
             // 
             this.papersDataListView.Alignment = System.Windows.Forms.ListViewAlignment.Left;
@@ -172,15 +185,19 @@
             this.papersDataListView.DataSource = null;
             this.papersDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.papersDataListView.FullRowSelect = true;
+            this.papersDataListView.GridLines = true;
             this.papersDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.papersDataListView.HideSelection = false;
             this.papersDataListView.Location = new System.Drawing.Point(3, 53);
             this.papersDataListView.MultiSelect = false;
             this.papersDataListView.Name = "papersDataListView";
+            this.papersDataListView.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.papersDataListView.SelectedForeColor = System.Drawing.Color.Black;
             this.papersDataListView.ShowGroups = false;
             this.papersDataListView.Size = new System.Drawing.Size(346, 204);
             this.papersDataListView.SmallImageList = this.iconsImageList;
             this.papersDataListView.TabIndex = 3;
+            this.papersDataListView.UnfocusedSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(235)))), ((int)(((byte)(249)))));
             this.papersDataListView.UseCompatibleStateImageBehavior = false;
             this.papersDataListView.UseFiltering = true;
             this.papersDataListView.View = System.Windows.Forms.View.Details;
@@ -217,6 +234,13 @@
             this.statusColumn.Groupable = false;
             this.statusColumn.IsEditable = false;
             this.statusColumn.Text = "Status";
+            // 
+            // iconsImageList
+            // 
+            this.iconsImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iconsImageList.ImageStream")));
+            this.iconsImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.iconsImageList.Images.SetKeyName(0, "paper.png");
+            this.iconsImageList.Images.SetKeyName(1, "author.png");
             // 
             // allRadioButton
             // 
@@ -443,26 +467,6 @@
             this.reviewsDataListView.TabIndex = 0;
             this.reviewsDataListView.UseCompatibleStateImageBehavior = false;
             this.reviewsDataListView.View = System.Windows.Forms.View.Details;
-            // 
-            // iconsImageList
-            // 
-            this.iconsImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iconsImageList.ImageStream")));
-            this.iconsImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.iconsImageList.Images.SetKeyName(0, "paper.png");
-            this.iconsImageList.Images.SetKeyName(1, "author.png");
-            // 
-            // papersSearchPromptTextBox
-            // 
-            this.papersTableLayoutPanel.SetColumnSpan(this.papersSearchPromptTextBox, 3);
-            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 28);
-            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
-            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(346, 20);
-            this.papersSearchPromptTextBox.TabIndex = 0;
-            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
-            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
-            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.papersSearchPromptTextBox_TextChanged);
             // 
             // EditorForm
             // 
