@@ -130,6 +130,7 @@ namespace Magazine.View {
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            PaperController.RefreshModel();
             reviewsDataListView.DataSource = PaperController.GetReviewPapers(AccountController.User);
             reviewsDataListView.BuildList();
         }

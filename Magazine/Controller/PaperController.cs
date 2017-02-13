@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace Magazine.Controller {
     class PaperController {
+        public static void RefreshModel() {
+            foreach (var entity in AccountController.entities.ChangeTracker.Entries()) {
+                entity.Reload();
+            }
+        }
+
         public static List<paper> GetPapers(user user) {
             if (user.GROUP_id == 1) {
                 return AccountController.entities.papers.Where(p => p.Author == user.id).ToList();
@@ -134,6 +140,14 @@ namespace Magazine.Controller {
                 rev.status = AccountController.entities.status.Where(s => s.Name == "Review failed").First();
             }
             AccountController.entities.SaveChanges();
+        }
+
+        public static List<review> GetReviews(file submission) {
+            return AccountController.entities.reviews.Where(r => r.FILE_id == submission.id && r.STATUS_id!=2).ToList();
+        }
+
+        public static file GetFileDetails(int fileId) {
+            return AccountController.entities.files.Where(f => f.id == fileId).First();
         }
     }
 }

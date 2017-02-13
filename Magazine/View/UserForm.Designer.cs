@@ -124,7 +124,7 @@
             this.papersDataListView.DataSource = null;
             this.papersDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.papersDataListView.FullRowSelect = true;
-            this.papersDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.papersDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.papersDataListView.HideSelection = false;
             this.papersDataListView.Location = new System.Drawing.Point(3, 28);
             this.papersDataListView.MultiSelect = false;
@@ -165,6 +165,9 @@
             this.iconsImageList.Images.SetKeyName(0, "paper.png");
             this.iconsImageList.Images.SetKeyName(1, "date.png");
             this.iconsImageList.Images.SetKeyName(2, "status_inprogress.png");
+            this.iconsImageList.Images.SetKeyName(3, "warning.png");
+            this.iconsImageList.Images.SetKeyName(4, "accept.png");
+            this.iconsImageList.Images.SetKeyName(5, "reject.png");
             // 
             // addPaperButton
             // 

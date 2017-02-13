@@ -31,7 +31,6 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.papersGroupBox = new System.Windows.Forms.GroupBox();
             this.papersTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.papersDataListView = new BrightIdeasSoftware.DataListView();
             this.titleColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.authorColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -57,6 +56,13 @@
             this.RejectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewsGroupBox = new System.Windows.Forms.GroupBox();
             this.reviewsDataListView = new BrightIdeasSoftware.DataListView();
+            this.describedTaskRenderer = new BrightIdeasSoftware.DescribedTaskRenderer();
+            this.reviewImageList = new System.Windows.Forms.ImageList(this.components);
+            this.reviewerColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.editorTableLayoutPanel.SuspendLayout();
             this.controlToolStrip.SuspendLayout();
             this.papersGroupBox.SuspendLayout();
@@ -69,6 +75,7 @@
             this.commentToolStrip.SuspendLayout();
             this.reviewsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reviewsDataListView)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // editorTableLayoutPanel
@@ -76,17 +83,15 @@
             this.editorTableLayoutPanel.ColumnCount = 2;
             this.editorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.editorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.editorTableLayoutPanel.Controls.Add(this.controlToolStrip, 1, 0);
             this.editorTableLayoutPanel.Controls.Add(this.papersGroupBox, 0, 1);
             this.editorTableLayoutPanel.Controls.Add(this.detailsGroupBox, 1, 1);
             this.editorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editorTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.editorTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
             this.editorTableLayoutPanel.Name = "editorTableLayoutPanel";
             this.editorTableLayoutPanel.RowCount = 2;
-            this.editorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.editorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.editorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.editorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.editorTableLayoutPanel.Size = new System.Drawing.Size(728, 315);
+            this.editorTableLayoutPanel.Size = new System.Drawing.Size(728, 337);
             this.editorTableLayoutPanel.TabIndex = 0;
             // 
             // controlToolStrip
@@ -129,6 +134,7 @@
             this.papersGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.papersGroupBox.Location = new System.Drawing.Point(3, 33);
             this.papersGroupBox.Name = "papersGroupBox";
+            this.editorTableLayoutPanel.SetRowSpan(this.papersGroupBox, 2);
             this.papersGroupBox.Size = new System.Drawing.Size(358, 279);
             this.papersGroupBox.TabIndex = 4;
             this.papersGroupBox.TabStop = false;
@@ -154,19 +160,6 @@
             this.papersTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.papersTableLayoutPanel.Size = new System.Drawing.Size(352, 260);
             this.papersTableLayoutPanel.TabIndex = 0;
-            // 
-            // papersSearchPromptTextBox
-            // 
-            this.papersTableLayoutPanel.SetColumnSpan(this.papersSearchPromptTextBox, 3);
-            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 28);
-            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
-            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(346, 20);
-            this.papersSearchPromptTextBox.TabIndex = 0;
-            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
-            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
-            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.papersSearchPromptTextBox_TextChanged);
             // 
             // papersDataListView
             // 
@@ -201,6 +194,7 @@
             this.papersDataListView.UseCompatibleStateImageBehavior = false;
             this.papersDataListView.UseFiltering = true;
             this.papersDataListView.View = System.Windows.Forms.View.Details;
+            this.papersDataListView.SelectionChanged += new System.EventHandler(this.papersDataListView_SelectionChanged);
             // 
             // titleColumn
             // 
@@ -227,7 +221,7 @@
             // 
             // statusColumn
             // 
-            this.statusColumn.AspectName = "STATUS_id";
+            this.statusColumn.AspectName = "status.Name";
             this.statusColumn.AutoCompleteEditor = false;
             this.statusColumn.AutoCompleteEditorMode = System.Windows.Forms.AutoCompleteMode.None;
             this.statusColumn.FillsFreeSpace = true;
@@ -241,6 +235,10 @@
             this.iconsImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.iconsImageList.Images.SetKeyName(0, "paper.png");
             this.iconsImageList.Images.SetKeyName(1, "author.png");
+            this.iconsImageList.Images.SetKeyName(2, "accept.png");
+            this.iconsImageList.Images.SetKeyName(3, "warning.png");
+            this.iconsImageList.Images.SetKeyName(4, "reject.png");
+            this.iconsImageList.Images.SetKeyName(5, "status_inprogress.png");
             // 
             // allRadioButton
             // 
@@ -286,6 +284,7 @@
             this.detailsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.detailsGroupBox.Location = new System.Drawing.Point(367, 33);
             this.detailsGroupBox.Name = "detailsGroupBox";
+            this.editorTableLayoutPanel.SetRowSpan(this.detailsGroupBox, 2);
             this.detailsGroupBox.Size = new System.Drawing.Size(358, 279);
             this.detailsGroupBox.TabIndex = 5;
             this.detailsGroupBox.TabStop = false;
@@ -356,7 +355,7 @@
             this.commentTableLayoutPanel.Name = "commentTableLayoutPanel";
             this.commentTableLayoutPanel.RowCount = 2;
             this.commentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.commentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.commentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.commentTableLayoutPanel.Size = new System.Drawing.Size(340, 90);
             this.commentTableLayoutPanel.TabIndex = 0;
             // 
@@ -367,15 +366,16 @@
             this.commentTextBox.Location = new System.Drawing.Point(3, 3);
             this.commentTextBox.Multiline = true;
             this.commentTextBox.Name = "commentTextBox";
-            this.commentTextBox.Size = new System.Drawing.Size(334, 54);
+            this.commentTextBox.ReadOnly = true;
+            this.commentTextBox.Size = new System.Drawing.Size(334, 84);
             this.commentTextBox.TabIndex = 0;
             // 
             // saveButton
             // 
             this.saveButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.saveButton.Location = new System.Drawing.Point(263, 63);
+            this.saveButton.Location = new System.Drawing.Point(263, 93);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(74, 24);
+            this.saveButton.Size = new System.Drawing.Size(74, 1);
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -387,9 +387,9 @@
             this.commentToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.commentToolStripDropDownButton});
             this.commentToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.commentToolStrip.Location = new System.Drawing.Point(0, 60);
+            this.commentToolStrip.Location = new System.Drawing.Point(0, 90);
             this.commentToolStrip.Name = "commentToolStrip";
-            this.commentToolStrip.Size = new System.Drawing.Size(260, 25);
+            this.commentToolStrip.Size = new System.Drawing.Size(260, 1);
             this.commentToolStrip.TabIndex = 2;
             this.commentToolStrip.Text = "toolStrip1";
             // 
@@ -406,14 +406,15 @@
             this.commentToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("commentToolStripDropDownButton.Image")));
             this.commentToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.commentToolStripDropDownButton.Name = "commentToolStripDropDownButton";
-            this.commentToolStripDropDownButton.Size = new System.Drawing.Size(97, 22);
-            this.commentToolStripDropDownButton.Text = "Send to review";
+            this.commentToolStripDropDownButton.Size = new System.Drawing.Size(89, 0);
+            this.commentToolStripDropDownButton.Text = "Select option";
             // 
             // reviewToolStripMenuItem
             // 
             this.reviewToolStripMenuItem.Name = "reviewToolStripMenuItem";
             this.reviewToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.reviewToolStripMenuItem.Text = "Send to review";
+            this.reviewToolStripMenuItem.Visible = false;
             this.reviewToolStripMenuItem.Click += new System.EventHandler(this.reviewToolStripMenuItem_Click);
             // 
             // returnToolStripMenuItem
@@ -421,6 +422,7 @@
             this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
             this.returnToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.returnToolStripMenuItem.Text = "Return to author";
+            this.returnToolStripMenuItem.Visible = false;
             this.returnToolStripMenuItem.Click += new System.EventHandler(this.returnToolStripMenuItem_Click);
             // 
             // finalToolStripMenuItem
@@ -428,6 +430,7 @@
             this.finalToolStripMenuItem.Name = "finalToolStripMenuItem";
             this.finalToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.finalToolStripMenuItem.Text = "Return to final edit";
+            this.finalToolStripMenuItem.Visible = false;
             this.finalToolStripMenuItem.Click += new System.EventHandler(this.finalToolStripMenuItem_Click);
             // 
             // publishToolStripMenuItem
@@ -435,6 +438,7 @@
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
             this.publishToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.publishToolStripMenuItem.Text = "Publish";
+            this.publishToolStripMenuItem.Visible = false;
             this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
             // 
             // RejectToolStripMenuItem
@@ -442,6 +446,7 @@
             this.RejectToolStripMenuItem.Name = "RejectToolStripMenuItem";
             this.RejectToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.RejectToolStripMenuItem.Text = "Reject";
+            this.RejectToolStripMenuItem.Visible = false;
             this.RejectToolStripMenuItem.Click += new System.EventHandler(this.RejectToolStripMenuItem_Click);
             // 
             // reviewsGroupBox
@@ -458,22 +463,91 @@
             // 
             // reviewsDataListView
             // 
+            this.reviewsDataListView.AllColumns.Add(this.reviewerColumn);
+            this.reviewsDataListView.AutoArrange = false;
+            this.reviewsDataListView.AutoGenerateColumns = false;
+            this.reviewsDataListView.BackColor = System.Drawing.SystemColors.Control;
+            this.reviewsDataListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reviewsDataListView.CellEditUseWholeCell = false;
+            this.reviewsDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.reviewerColumn});
             this.reviewsDataListView.DataSource = null;
             this.reviewsDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewsDataListView.FullRowSelect = true;
+            this.reviewsDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.reviewsDataListView.Location = new System.Drawing.Point(3, 16);
             this.reviewsDataListView.Name = "reviewsDataListView";
+            this.reviewsDataListView.RowHeight = 60;
+            this.reviewsDataListView.ShowGroups = false;
             this.reviewsDataListView.Size = new System.Drawing.Size(340, 90);
             this.reviewsDataListView.TabIndex = 0;
             this.reviewsDataListView.UseCompatibleStateImageBehavior = false;
             this.reviewsDataListView.View = System.Windows.Forms.View.Details;
             // 
+            // reviewImageList
+            // 
+            this.reviewImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("reviewImageList.ImageStream")));
+            this.reviewImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.reviewImageList.Images.SetKeyName(0, "note.png");
+            // 
+            // reviewerColumn
+            // 
+            this.reviewerColumn.AspectName = "user";
+            this.reviewerColumn.CellPadding = new System.Drawing.Rectangle(0, 0, 0, 3);
+            this.reviewerColumn.FillsFreeSpace = true;
+            this.reviewerColumn.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reviewerColumn.IsEditable = false;
+            this.reviewerColumn.Renderer = this.describedTaskRenderer;
+            this.reviewerColumn.Text = "Rewiever";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(728, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::Magazine.Properties.Resources.refresh1;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // papersSearchPromptTextBox
+            // 
+            this.papersTableLayoutPanel.SetColumnSpan(this.papersSearchPromptTextBox, 3);
+            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 28);
+            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
+            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(346, 20);
+            this.papersSearchPromptTextBox.TabIndex = 0;
+            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
+            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
+            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.papersSearchPromptTextBox_TextChanged);
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 315);
+            this.ClientSize = new System.Drawing.Size(728, 361);
+            this.Controls.Add(this.controlToolStrip);
             this.Controls.Add(this.editorTableLayoutPanel);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "EditorForm";
             this.Text = "EditorForm";
             this.SizeChanged += new System.EventHandler(this.EditorForm_SizeChanged);
@@ -493,7 +567,10 @@
             this.commentToolStrip.PerformLayout();
             this.reviewsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.reviewsDataListView)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -531,5 +608,11 @@
         private BrightIdeasSoftware.OLVColumn authorColumn;
         private BrightIdeasSoftware.OLVColumn statusColumn;
         private System.Windows.Forms.ImageList iconsImageList;
+        private BrightIdeasSoftware.DescribedTaskRenderer describedTaskRenderer;
+        private System.Windows.Forms.ImageList reviewImageList;
+        private BrightIdeasSoftware.OLVColumn reviewerColumn;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

@@ -16,6 +16,7 @@ namespace Magazine.View {
     public partial class EditorForm : Form {
         public EditorForm() {
             InitializeComponent();
+            int statusOffest = 1;
             userToolStripDropDownButton.Text = AccountController.User.Username;
             papersDataListView.GetColumn(1).AspectToStringConverter = delegate (object x) {
                 user u = (x as user);
@@ -23,8 +24,18 @@ namespace Magazine.View {
             };
             papersDataListView.GetColumn(0).ImageGetter = i => 0;
             papersDataListView.GetColumn(1).ImageGetter = i => 1;
+            papersDataListView.GetColumn(2).ImageGetter = p => StatusUtility.newIDEditor((p as paper).STATUS_id) + statusOffest;
             papersDataListView.DataSource = PaperController.GetPapers(AccountController.User);
             papersDataListView.AutoResizeColumns();
+            describedTaskRenderer.TitleFont = new Font(papersGroupBox.Font, FontStyle.Bold);
+            describedTaskRenderer.DescriptionAspectName = "Comment";
+            describedTaskRenderer.ImageList = reviewImageList;
+            describedTaskRenderer.TitleDescriptionSpace = 6;
+            reviewsDataListView.GetColumn(0).ImageGetter = r => 0;
+            reviewsDataListView.GetColumn(0).AspectToStringConverter = delegate (object x) {
+                user u = (x as user);
+                return u.Firstname + " " + u.Lastname;
+            };
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -148,6 +159,58 @@ namespace Magazine.View {
             if (((RadioButton)sender).Checked) {
                 papersDataListView.ModelFilter = null;
             }
+        }
+
+        private void papersDataListView_SelectionChanged(object sender, EventArgs e) {
+            paper selectedPaper = (paper)papersDataListView.SelectedObject;
+            commentTableLayoutPanel.RowStyles[1].Height = 0;
+            commentTextBox.ReadOnly = true;
+            if (selectedPaper == null) {
+                return;
+            }
+            int fileId = PaperController.GetLatestVersion(selectedPaper.id);
+            file lastFile = PaperController.GetFileDetails(fileId);
+            commentTextBox.Text = lastFile.EditorComment;
+            if (StatusUtility.newIDEditor(selectedPaper.STATUS_id) == 2) {
+                NeedsAtentionVisibility(selectedPaper);
+            }
+            reviewsDataListView.SetObjects(PaperController.GetReviews(lastFile));
+        }
+
+        private void ResetMenuVisibility() {
+            publishToolStripMenuItem.Visible = false;
+            RejectToolStripMenuItem.Visible = false;
+            returnToolStripMenuItem.Visible = false;
+            reviewToolStripMenuItem.Visible = false;
+            finalToolStripMenuItem.Visible = false;
+        }
+
+        private void NeedsAtentionVisibility(paper selectedPaper) {
+            ResetMenuVisibility();
+            commentTextBox.ReadOnly = false;
+            commentTableLayoutPanel.RowStyles[1].Height = 30;
+            if (selectedPaper.STATUS_id == 1 || selectedPaper.STATUS_id==6) {
+                reviewToolStripMenuItem.Visible = true;
+                returnToolStripMenuItem.Visible = true;
+            }
+            else if(selectedPaper.STATUS_id == 8) {
+                publishToolStripMenuItem.Visible = true;
+                RejectToolStripMenuItem.Visible = true;
+            }
+            else if (selectedPaper.STATUS_id == 4) {
+                returnToolStripMenuItem.Visible = true;
+                RejectToolStripMenuItem.Visible = true;
+            }
+            else {
+                publishToolStripMenuItem.Visible = true;
+                finalToolStripMenuItem.Visible = true;
+                RejectToolStripMenuItem.Visible = true;
+            }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            PaperController.RefreshModel();
+            papersDataListView.DataSource = PaperController.GetPapers(AccountController.User);
         }
     }
 }
