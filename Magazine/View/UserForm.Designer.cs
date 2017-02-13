@@ -32,8 +32,6 @@
             this.titleColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.statusColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
-            this.addPaperButton = new System.Windows.Forms.Button();
-            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.submissionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.submissionsGroupBox = new System.Windows.Forms.GroupBox();
             this.submissionsDataListView = new BrightIdeasSoftware.DataListView();
@@ -42,16 +40,21 @@
             this.editorCommentTextBox = new System.Windows.Forms.TextBox();
             this.uploadGroupBox = new System.Windows.Forms.GroupBox();
             this.uploadTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.uploadControl = new Magazine.Controls.UploadControl();
             this.uploadProgressBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.userToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.addPaperButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.paperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
+            this.uploadControl = new Magazine.Controls.UploadControl();
             this.formTableLayoutPanel.SuspendLayout();
             this.papersGroupBox.SuspendLayout();
             this.papersTableLayoutPanel1.SuspendLayout();
@@ -95,11 +98,13 @@
             // 
             // papersTableLayoutPanel1
             // 
-            this.papersTableLayoutPanel1.ColumnCount = 1;
+            this.papersTableLayoutPanel1.ColumnCount = 2;
             this.papersTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.papersTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.papersTableLayoutPanel1.Controls.Add(this.papersDataListView, 0, 1);
             this.papersTableLayoutPanel1.Controls.Add(this.addPaperButton, 0, 2);
             this.papersTableLayoutPanel1.Controls.Add(this.papersSearchPromptTextBox, 0, 0);
+            this.papersTableLayoutPanel1.Controls.Add(this.cancelButton, 1, 2);
             this.papersTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.papersTableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.papersTableLayoutPanel1.Name = "papersTableLayoutPanel1";
@@ -120,6 +125,7 @@
             this.papersDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.titleColumn,
             this.statusColumn});
+            this.papersTableLayoutPanel1.SetColumnSpan(this.papersDataListView, 2);
             this.papersDataListView.Cursor = System.Windows.Forms.Cursors.Default;
             this.papersDataListView.DataSource = null;
             this.papersDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -168,30 +174,6 @@
             this.iconsImageList.Images.SetKeyName(3, "warning.png");
             this.iconsImageList.Images.SetKeyName(4, "accept.png");
             this.iconsImageList.Images.SetKeyName(5, "reject.png");
-            // 
-            // addPaperButton
-            // 
-            this.addPaperButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addPaperButton.Image = global::Magazine.Properties.Resources.add;
-            this.addPaperButton.Location = new System.Drawing.Point(315, 314);
-            this.addPaperButton.Name = "addPaperButton";
-            this.addPaperButton.Size = new System.Drawing.Size(30, 29);
-            this.addPaperButton.TabIndex = 3;
-            this.addPaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.addPaperButton.UseVisualStyleBackColor = true;
-            this.addPaperButton.Click += new System.EventHandler(this.addPaperButton_Click);
-            // 
-            // papersSearchPromptTextBox
-            // 
-            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 3);
-            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
-            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(342, 20);
-            this.papersSearchPromptTextBox.TabIndex = 2;
-            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
-            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
-            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.projectsSearchPromptTextBox_TextChanged);
             // 
             // submissionsTableLayoutPanel
             // 
@@ -245,6 +227,7 @@
             this.submissionsDataListView.UseCompatibleStateImageBehavior = false;
             this.submissionsDataListView.View = System.Windows.Forms.View.Details;
             this.submissionsDataListView.SelectionChanged += new System.EventHandler(this.submissionsDataListView_SelectionChanged);
+            this.submissionsDataListView.DoubleClick += new System.EventHandler(this.submissionsDataListView_DoubleClick);
             // 
             // timestampColumn
             // 
@@ -301,16 +284,6 @@
             this.uploadTableLayoutPanel.Size = new System.Drawing.Size(343, 126);
             this.uploadTableLayoutPanel.TabIndex = 0;
             // 
-            // uploadControl
-            // 
-            this.uploadControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uploadControl.Location = new System.Drawing.Point(3, 3);
-            this.uploadControl.Name = "uploadControl";
-            this.uploadControl.Size = new System.Drawing.Size(337, 100);
-            this.uploadControl.TabIndex = 0;
-            this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
-            // 
             // uploadProgressBar
             // 
             this.uploadProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -332,7 +305,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem});
+            this.newToolStripMenuItem,
+            this.refreshToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -342,15 +316,8 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.paperToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
-            // 
-            // paperToolStripMenuItem
-            // 
-            this.paperToolStripMenuItem.Name = "paperToolStripMenuItem";
-            this.paperToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.paperToolStripMenuItem.Text = "Paper";
-            this.paperToolStripMenuItem.Click += new System.EventHandler(this.paperToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -365,6 +332,11 @@
             this.toolStrip1.Size = new System.Drawing.Size(314, 24);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "\"PDF files (*.pdf)|*.pdf|All files (*.*)|*.*\";";
             // 
             // userToolStripDropDownButton
             // 
@@ -386,10 +358,69 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // openFileDialog
+            // addPaperButton
             // 
-            this.openFileDialog.FileName = "openFileDialog";
-            this.openFileDialog.Filter = "\"PDF files (*.pdf)|*.pdf|All files (*.*)|*.*\";";
+            this.addPaperButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.addPaperButton.Image = global::Magazine.Properties.Resources.add;
+            this.addPaperButton.Location = new System.Drawing.Point(280, 314);
+            this.addPaperButton.Name = "addPaperButton";
+            this.addPaperButton.Size = new System.Drawing.Size(30, 29);
+            this.addPaperButton.TabIndex = 3;
+            this.addPaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.addPaperButton, "Add new paper");
+            this.addPaperButton.UseVisualStyleBackColor = true;
+            this.addPaperButton.Click += new System.EventHandler(this.addPaperButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelButton.Image = global::Magazine.Properties.Resources.cancel;
+            this.cancelButton.Location = new System.Drawing.Point(316, 314);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(29, 29);
+            this.cancelButton.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.cancelButton, "Cancel paper");
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // paperToolStripMenuItem
+            // 
+            this.paperToolStripMenuItem.Image = global::Magazine.Properties.Resources.paper_small;
+            this.paperToolStripMenuItem.Name = "paperToolStripMenuItem";
+            this.paperToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.paperToolStripMenuItem.Text = "Paper";
+            this.paperToolStripMenuItem.Click += new System.EventHandler(this.paperToolStripMenuItem_Click);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::Magazine.Properties.Resources.refresh1;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // papersSearchPromptTextBox
+            // 
+            this.papersTableLayoutPanel1.SetColumnSpan(this.papersSearchPromptTextBox, 2);
+            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 3);
+            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
+            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(342, 20);
+            this.papersSearchPromptTextBox.TabIndex = 2;
+            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
+            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
+            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.projectsSearchPromptTextBox_TextChanged);
+            // 
+            // uploadControl
+            // 
+            this.uploadControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uploadControl.Location = new System.Drawing.Point(3, 3);
+            this.uploadControl.Name = "uploadControl";
+            this.uploadControl.Size = new System.Drawing.Size(337, 100);
+            this.uploadControl.TabIndex = 0;
+            this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
             // 
             // UserForm
             // 
@@ -453,5 +484,8 @@
         private BrightIdeasSoftware.OLVColumn timestampColumn;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private BrightIdeasSoftware.OLVColumn statusColumn;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

@@ -236,6 +236,8 @@
       <DependentUpon>MagazineModel.edmx</DependentUpon>
       <LastGenOutput>MagazineModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\paper_small.png" />
+    <None Include="Resources\cancel.png" />
     <None Include="Resources\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Magazine.View {
         public UserForm() {
             InitializeComponent();
             int statusOffest = 1;
+            papersTableLayoutPanel1.ColumnStyles[1].Width = 0;
             uploadTableLayoutPanel.RowStyles[1].Height = 0;
             submissionsTableLayoutPanel.RowStyles[2].Height = 0;
             userToolStripDropDownButton.Text = AccountController.User.Username;
@@ -35,9 +37,12 @@ namespace Magazine.View {
         private void papersDataListView_SelectionChanged(object sender, EventArgs e) {
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
             if (selectedPaper == null) { return; }
+            submissionsTableLayoutPanel.RowStyles[2].Height = 0;
+            papersTableLayoutPanel1.ColumnStyles[1].Width = 0;
             submissionsDataListView.DataSource = PaperController.GetSubmissions(selectedPaper);
-            if(StatusUtility.Name(selectedPaper.STATUS_id)=="Needs attention") {
+            if(selectedPaper.STATUS_id==5 || selectedPaper.STATUS_id==7) {
                 submissionsTableLayoutPanel.RowStyles[2].Height = 150;
+                papersTableLayoutPanel1.ColumnStyles[1].Width = 35;
             }
         }
 
@@ -62,6 +67,7 @@ namespace Magazine.View {
             MessageBox.Show("Upload successful!", "Upload", MessageBoxButtons.OK, MessageBoxIcon.Information);
             uploadProgressBar.Style = ProgressBarStyle.Continuous;
             uploadTableLayoutPanel.RowStyles[1].Height = 0;
+            papersDataListView.BuildList();
             submissionsDataListView.DataSource = PaperController.GetSubmissions(selectedPaper);
         }
 
@@ -91,6 +97,32 @@ namespace Magazine.View {
 
         private void paperToolStripMenuItem_Click(object sender, EventArgs e) {
             addPaperButton.PerformClick();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e) {
+            var result = MessageBox.Show("Are you sure you want to cancel this paper?", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes) {
+                paper selectedPaper = (paper)papersDataListView.SelectedObject;
+                PaperController.CancelPaper(selectedPaper);
+                papersDataListView.BuildList();
+            }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            PaperController.RefreshModel();
+            papersDataListView.DataSource = PaperController.GetPapers(AccountController.User);
+        }
+
+        private void submissionsDataListView_DoubleClick(object sender, EventArgs e) {
+            file selectedFile = (file)submissionsDataListView.SelectedObject;
+            if(selectedFile != null) {
+                byte[] file = PaperController.GetFile(selectedFile.id);
+                string filename = "paper" + ".pdf";
+                var tempFolder = System.IO.Path.GetTempPath();
+                filename = System.IO.Path.Combine(tempFolder, filename);
+                System.IO.File.WriteAllBytes(filename, file);
+                Process.Start(filename);
+            }
         }
     }
 }

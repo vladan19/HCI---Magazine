@@ -30,6 +30,12 @@ namespace Magazine.Controller {
         }
 
         public static void UploadSubmission(paper p, string filePath) {
+            if (p.STATUS_id == 5) {
+                p.STATUS_id = 6;
+            }
+            else if (p.STATUS_id == 7) {
+                p.STATUS_id = 8;
+            }
             byte[] fileBytes = File.ReadAllBytes(filePath);
             string[] list = filePath.Split('\\');
             string extension = list[list.Length - 1].Split('.')[1];
@@ -148,6 +154,11 @@ namespace Magazine.Controller {
 
         public static file GetFileDetails(int fileId) {
             return AccountController.entities.files.Where(f => f.id == fileId).First();
+        }
+
+        public static void CancelPaper(paper p) {
+            p.status = AccountController.entities.status.Where(s => s.Name == "Canceled").First();
+            AccountController.entities.SaveChanges();
         }
     }
 }
