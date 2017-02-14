@@ -239,5 +239,10 @@ namespace Magazine.View {
             PaperController.RefreshModel();
             papersDataListView.DataSource = PaperController.GetPapers(AccountController.User);
         }
+
+        private void submissionsButton_Click(object sender, EventArgs e) {
+            SubmissionsForm sf = new SubmissionsForm((paper)papersDataListView.SelectedObject);
+            sf.ShowDialog();
+        }
     }
 }

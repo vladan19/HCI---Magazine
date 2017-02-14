@@ -257,6 +257,7 @@
             this.submissionsDataListView.DataSource = null;
             this.submissionsDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.submissionsDataListView.FullRowSelect = true;
+            this.submissionsDataListView.GridLines = true;
             this.submissionsDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.submissionsDataListView.HideSelection = false;
             this.submissionsDataListView.Location = new System.Drawing.Point(3, 16);

@@ -148,6 +148,12 @@
     <Compile Include="View\ReviewerForm.Designer.cs">
       <DependentUpon>ReviewerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SubmissionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SubmissionsForm.Designer.cs">
+      <DependentUpon>SubmissionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReviewerForm.resx">
       <DependentUpon>ReviewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SubmissionsForm.resx">
+      <DependentUpon>SubmissionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

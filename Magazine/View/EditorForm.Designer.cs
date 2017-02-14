@@ -312,6 +312,7 @@
             this.submissionsButton.TabIndex = 1;
             this.submissionsButton.Text = "Submissions";
             this.submissionsButton.UseVisualStyleBackColor = true;
+            this.submissionsButton.Click += new System.EventHandler(this.submissionsButton_Click);
             // 
             // commentGroupBox
             // 

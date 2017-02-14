@@ -276,6 +276,7 @@
             this.dateColumn.Groupable = false;
             this.dateColumn.IsEditable = false;
             this.dateColumn.Text = "Date of submission";
+            this.dateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // statusColumn
             // 
