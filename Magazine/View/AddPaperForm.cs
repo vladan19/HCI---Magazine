@@ -41,8 +41,11 @@ namespace Magazine.View {
             Close();
         }
 
-        private void uploadControl_Click(object sender, EventArgs e) {
+        private void browseButton_Click(object sender, EventArgs e) {
             var result = openFileDialog.ShowDialog();
+            if(result == DialogResult.OK) {
+                filenameTextBox.Text = openFileDialog.FileName;
+            }
         }
     }
 }

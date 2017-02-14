@@ -23,14 +23,16 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPaperForm));
             this.addPaperGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.titleGroupBox = new System.Windows.Forms.GroupBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
-            this.uploadControl = new Magazine.Controls.UploadControl();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.filenameTextBox = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.addPaperGroupBox.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
@@ -55,16 +57,17 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel.Controls.Add(this.titleGroupBox, 0, 0);
-            this.tableLayoutPanel.Controls.Add(this.uploadControl, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.progressBar, 0, 2);
             this.tableLayoutPanel.Controls.Add(this.okButton, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.cancelButton, 2, 2);
+            this.tableLayoutPanel.Controls.Add(this.browseButton, 2, 1);
+            this.tableLayoutPanel.Controls.Add(this.filenameTextBox, 0, 1);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 3;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(552, 257);
             this.tableLayoutPanel.TabIndex = 0;
@@ -76,7 +79,7 @@
             this.titleGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleGroupBox.Location = new System.Drawing.Point(3, 3);
             this.titleGroupBox.Name = "titleGroupBox";
-            this.titleGroupBox.Size = new System.Drawing.Size(546, 107);
+            this.titleGroupBox.Size = new System.Drawing.Size(546, 191);
             this.titleGroupBox.TabIndex = 0;
             this.titleGroupBox.TabStop = false;
             this.titleGroupBox.Text = "Title";
@@ -87,33 +90,22 @@
             this.titleTextBox.Location = new System.Drawing.Point(3, 16);
             this.titleTextBox.Multiline = true;
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(540, 88);
+            this.titleTextBox.Size = new System.Drawing.Size(540, 172);
             this.titleTextBox.TabIndex = 0;
-            // 
-            // uploadControl
-            // 
-            this.uploadControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableLayoutPanel.SetColumnSpan(this.uploadControl, 3);
-            this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uploadControl.Location = new System.Drawing.Point(3, 116);
-            this.uploadControl.Name = "uploadControl";
-            this.uploadControl.Size = new System.Drawing.Size(546, 107);
-            this.uploadControl.TabIndex = 1;
-            this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
             // 
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(3, 229);
+            this.progressBar.Location = new System.Drawing.Point(3, 230);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(386, 25);
+            this.progressBar.Size = new System.Drawing.Size(386, 24);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar.TabIndex = 2;
             this.progressBar.Visible = false;
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(395, 229);
+            this.okButton.Location = new System.Drawing.Point(395, 230);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(74, 23);
             this.okButton.TabIndex = 3;
@@ -123,13 +115,36 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(475, 229);
+            this.cancelButton.Location = new System.Drawing.Point(475, 230);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(74, 23);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // browseButton
+            // 
+            this.browseButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.browseButton.Location = new System.Drawing.Point(475, 200);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(74, 24);
+            this.browseButton.TabIndex = 5;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            // 
+            // filenameTextBox
+            // 
+            this.tableLayoutPanel.SetColumnSpan(this.filenameTextBox, 2);
+            this.filenameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filenameTextBox.Location = new System.Drawing.Point(3, 200);
+            this.filenameTextBox.Multiline = true;
+            this.filenameTextBox.Name = "filenameTextBox";
+            this.filenameTextBox.ReadOnly = true;
+            this.filenameTextBox.Size = new System.Drawing.Size(466, 24);
+            this.filenameTextBox.TabIndex = 6;
+            this.filenameTextBox.Text = "File path";
             // 
             // openFileDialog
             // 
@@ -141,10 +156,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 276);
             this.Controls.Add(this.addPaperGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddPaperForm";
-            this.Text = "AddPaperForm";
+            this.Text = "Add new paper";
             this.addPaperGroupBox.ResumeLayout(false);
             this.tableLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel.PerformLayout();
             this.titleGroupBox.ResumeLayout(false);
             this.titleGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -157,10 +174,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.GroupBox titleGroupBox;
         private System.Windows.Forms.TextBox titleTextBox;
-        private Controls.UploadControl uploadControl;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.TextBox filenameTextBox;
     }
 }

@@ -14,6 +14,8 @@ using System.Windows.Forms;
 
 namespace Magazine.View {
     public partial class UserForm : Form {
+        private object lastSelected;
+        private object lasSubmission;
         public UserForm() {
             InitializeComponent();
             int statusOffest = 1;
@@ -36,7 +38,11 @@ namespace Magazine.View {
 
         private void papersDataListView_SelectionChanged(object sender, EventArgs e) {
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
-            if (selectedPaper == null) { return; }
+            if (selectedPaper == null) {
+                papersDataListView.SelectedObject = lastSelected;
+                return;
+            }
+            lastSelected = papersDataListView.SelectedObject;
             submissionsTableLayoutPanel.RowStyles[2].Height = 0;
             papersTableLayoutPanel1.ColumnStyles[1].Width = 0;
             submissionsDataListView.DataSource = PaperController.GetSubmissions(selectedPaper);
@@ -48,7 +54,12 @@ namespace Magazine.View {
 
         private void submissionsDataListView_SelectionChanged(object sender, EventArgs e) {
             file selectedSubmission = (file)submissionsDataListView.SelectedObject;
-            if (selectedSubmission == null) { return; }
+            if (selectedSubmission == null) {
+                submissionsDataListView.SelectedObject = lasSubmission;
+                return;
+            }
+            lasSubmission = submissionsDataListView.SelectedObject;
+            editorLabel.Text = selectedSubmission.paper.editor_user.Firstname + " " + selectedSubmission.paper.editor_user.Lastname;
             editorCommentTextBox.Text = selectedSubmission.EditorComment;
         }
 

@@ -14,9 +14,11 @@ using System.Windows.Forms;
 
 namespace Magazine.View {
     public partial class EditorForm : Form {
+        private object lastSelected;
         public EditorForm() {
             InitializeComponent();
             int statusOffest = 1;
+            detailsTableLayoutPanel.RowStyles[3].Height = 0;
             userToolStripDropDownButton.Text = AccountController.User.Username;
             papersDataListView.GetColumn(1).AspectToStringConverter = delegate (object x) {
                 user u = (x as user);
@@ -47,6 +49,7 @@ namespace Magazine.View {
         }
 
         private void openButton_Click(object sender, EventArgs e) {
+            detailsTableLayoutPanel.RowStyles[3].Height = 20;
             var paperId = ((paper)papersDataListView.SelectedObject).id;
             int idFile = PaperController.GetLatestVersion(paperId);
             byte[] file = PaperController.GetFile(idFile);
@@ -55,9 +58,11 @@ namespace Magazine.View {
             filename = System.IO.Path.Combine(tempFolder, filename);
             System.IO.File.WriteAllBytes(filename, file);
             Process.Start(filename);
+            detailsTableLayoutPanel.RowStyles[3].Height = 0;
         }
 
         private void papersSearchPromptTextBox_TextChanged(object sender, EventArgs e) {
+            allRadioButton.Checked = true;
             papersDataListView.ModelFilter = new ModelFilter(x => {
                 var myPaper = x as paper;
                 return x != null && (myPaper.Title.ToLower().Contains(papersSearchPromptTextBox.Text.ToLower()));
@@ -108,32 +113,52 @@ namespace Magazine.View {
         }
 
         private async void RejectPaper() {
+            detailsTableLayoutPanel.RowStyles[3].Height = 20;
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
             await Task.Run(() => { PaperController.Reject(selectedPaper, commentTextBox.Text); });
+            papersDataListView.BuildList();
+            commentToolStripDropDownButton.Text = "Select option";
+            detailsTableLayoutPanel.RowStyles[3].Height = 0;
             MessageBox.Show("Paper rejected!", "Rejected", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void PublishPaper() {
+            detailsTableLayoutPanel.RowStyles[3].Height = 20;
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
             await Task.Run(() => { PaperController.Publish(selectedPaper, commentTextBox.Text); });
+            papersDataListView.BuildList();
+            commentToolStripDropDownButton.Text = "Select option";
+            detailsTableLayoutPanel.RowStyles[3].Height = 0;
             MessageBox.Show("Paper published!", "Published", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void ReturnToFinalEdit() {
+            detailsTableLayoutPanel.RowStyles[3].Height = 20;
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
             await Task.Run(() => { PaperController.ReturnToFinalEdit(selectedPaper, commentTextBox.Text); });
+            papersDataListView.BuildList();
+            commentToolStripDropDownButton.Text = "Select option";
+            detailsTableLayoutPanel.RowStyles[3].Height = 0;
             MessageBox.Show("Paper returned to final edit!", "Returned to final edit", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void ReturnToAuthor() {
+            detailsTableLayoutPanel.RowStyles[3].Height = 20;
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
             await Task.Run(() => { PaperController.ReturnToAuthor(selectedPaper, commentTextBox.Text); });
+            papersDataListView.BuildList();
+            commentToolStripDropDownButton.Text = "Select option";
+            detailsTableLayoutPanel.RowStyles[3].Height = 0;
             MessageBox.Show("Paper returned to author!", "Returned to author", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void SendToReview() {
+            detailsTableLayoutPanel.RowStyles[3].Height = 20;
             paper selectedPaper = (paper)papersDataListView.SelectedObject;
             await Task.Run(() => { PaperController.SendToReview(selectedPaper, commentTextBox.Text); });
+            papersDataListView.BuildList();
+            commentToolStripDropDownButton.Text = "Select option";
+            detailsTableLayoutPanel.RowStyles[3].Height = 0;
             MessageBox.Show("Paper sent to review!", "Review", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -166,8 +191,10 @@ namespace Magazine.View {
             commentTableLayoutPanel.RowStyles[1].Height = 0;
             commentTextBox.ReadOnly = true;
             if (selectedPaper == null) {
+                papersDataListView.SelectedObject = lastSelected;
                 return;
             }
+            lastSelected = papersDataListView.SelectedObject;
             int fileId = PaperController.GetLatestVersion(selectedPaper.id);
             file lastFile = PaperController.GetFileDetails(fileId);
             commentTextBox.Text = lastFile.EditorComment;

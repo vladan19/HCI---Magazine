@@ -14,8 +14,10 @@ using System.Windows.Forms;
 
 namespace Magazine.View {
     public partial class ReviewerForm : Form {
+        private object lastSelected;
         public ReviewerForm() {
             InitializeComponent();
+            tableLayoutPanel.RowStyles[3].Height = 0;
             int statusOffset = 2;
             userToolStripDropDownButton.Text = AccountController.User.Username;
             reviewsDataListView.GetColumn(0).ImageGetter = i => 0;
@@ -44,6 +46,7 @@ namespace Magazine.View {
         }
 
         private void searchPapersPromptTextBox_TextChanged(object sender, EventArgs e) {
+            allRadioButton.Checked = true;
             reviewsDataListView.ModelFilter = new ModelFilter(x => {
                 var myReview = x as review;
                 return x != null && (myReview.file.paper.Title.ToLower().Contains(searchPapersPromptTextBox.Text.ToLower()));
@@ -59,11 +62,13 @@ namespace Magazine.View {
                 MessageBox.Show("You must select some option for review!", "Review error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            tableLayoutPanel.RowStyles[3].Height = 20;
             string status = commentToolStripDropDownButton.Text;
             string comment = reviewTextBox.Text;
             review selectedReview = (review)reviewsDataListView.SelectedObject;
             await Task.Run(() => { PaperController.ReviewCompleted(selectedReview, comment, status); });
             reviewsDataListView.BuildList();
+            tableLayoutPanel.RowStyles[3].Height = 0;
             MessageBox.Show("Review saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -86,6 +91,7 @@ namespace Magazine.View {
         }
 
         private void openButton_Click(object sender, EventArgs e) {
+            tableLayoutPanel.RowStyles[3].Height = 20;
             int idFile = ((review)reviewsDataListView.SelectedObject).FILE_id;
             byte[] file = PaperController.GetFile(idFile);
             string filename = "paper" + ".pdf";
@@ -93,14 +99,16 @@ namespace Magazine.View {
             filename = System.IO.Path.Combine(tempFolder, filename);
             System.IO.File.WriteAllBytes(filename, file);
             Process.Start(filename);
+            tableLayoutPanel.RowStyles[3].Height = 0;
         }
 
         private void papersDataListView_SelectionChanged(object sender, EventArgs e) {
             review selectedReview = (review)reviewsDataListView.SelectedObject;
             if (selectedReview == null) {
+                reviewsDataListView.SelectedObject = lastSelected;
                 return;
             }
-            paperLabel.Text = selectedReview.file.paper.Title;
+            lastSelected = reviewsDataListView.SelectedObject;
             reviewTextBox.Text = selectedReview.Comment;
             commentToolStripDropDownButton.Text = "Select review status";
             if (selectedReview.STATUS_id != 2) {

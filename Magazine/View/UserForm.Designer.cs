@@ -32,29 +32,31 @@
             this.titleColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.statusColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
+            this.addPaperButton = new System.Windows.Forms.Button();
+            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.submissionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.submissionsGroupBox = new System.Windows.Forms.GroupBox();
             this.submissionsDataListView = new BrightIdeasSoftware.DataListView();
             this.timestampColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.editorCommentGroupBox = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.editorCommentTextBox = new System.Windows.Forms.TextBox();
+            this.editorLabel = new System.Windows.Forms.Label();
             this.uploadGroupBox = new System.Windows.Forms.GroupBox();
             this.uploadTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.uploadControl = new Magazine.Controls.UploadControl();
             this.uploadProgressBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.userToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addPaperButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.paperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
-            this.uploadControl = new Magazine.Controls.UploadControl();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.userToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.formTableLayoutPanel.SuspendLayout();
             this.papersGroupBox.SuspendLayout();
             this.papersTableLayoutPanel1.SuspendLayout();
@@ -63,6 +65,7 @@
             this.submissionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.submissionsDataListView)).BeginInit();
             this.editorCommentGroupBox.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.uploadGroupBox.SuspendLayout();
             this.uploadTableLayoutPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -130,6 +133,7 @@
             this.papersDataListView.DataSource = null;
             this.papersDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.papersDataListView.FullRowSelect = true;
+            this.papersDataListView.GridLines = true;
             this.papersDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.papersDataListView.HideSelection = false;
             this.papersDataListView.Location = new System.Drawing.Point(3, 28);
@@ -174,6 +178,44 @@
             this.iconsImageList.Images.SetKeyName(3, "warning.png");
             this.iconsImageList.Images.SetKeyName(4, "accept.png");
             this.iconsImageList.Images.SetKeyName(5, "reject.png");
+            // 
+            // addPaperButton
+            // 
+            this.addPaperButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.addPaperButton.Image = global::Magazine.Properties.Resources.add;
+            this.addPaperButton.Location = new System.Drawing.Point(280, 314);
+            this.addPaperButton.Name = "addPaperButton";
+            this.addPaperButton.Size = new System.Drawing.Size(30, 29);
+            this.addPaperButton.TabIndex = 3;
+            this.addPaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.addPaperButton, "Add new paper");
+            this.addPaperButton.UseVisualStyleBackColor = true;
+            this.addPaperButton.Click += new System.EventHandler(this.addPaperButton_Click);
+            // 
+            // papersSearchPromptTextBox
+            // 
+            this.papersTableLayoutPanel1.SetColumnSpan(this.papersSearchPromptTextBox, 2);
+            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 3);
+            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
+            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(342, 20);
+            this.papersSearchPromptTextBox.TabIndex = 2;
+            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
+            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
+            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.projectsSearchPromptTextBox_TextChanged);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelButton.Image = global::Magazine.Properties.Resources.cancel;
+            this.cancelButton.Location = new System.Drawing.Point(316, 314);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(29, 29);
+            this.cancelButton.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.cancelButton, "Cancel paper");
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // submissionsTableLayoutPanel
             // 
@@ -238,7 +280,7 @@
             // 
             // editorCommentGroupBox
             // 
-            this.editorCommentGroupBox.Controls.Add(this.editorCommentTextBox);
+            this.editorCommentGroupBox.Controls.Add(this.tableLayoutPanel1);
             this.editorCommentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editorCommentGroupBox.Location = new System.Drawing.Point(3, 110);
             this.editorCommentGroupBox.Name = "editorCommentGroupBox";
@@ -247,16 +289,41 @@
             this.editorCommentGroupBox.TabStop = false;
             this.editorCommentGroupBox.Text = "Editor comment";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.editorCommentTextBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.editorLabel, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(343, 82);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
             // editorCommentTextBox
             // 
             this.editorCommentTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editorCommentTextBox.Location = new System.Drawing.Point(3, 16);
+            this.editorCommentTextBox.Location = new System.Drawing.Point(3, 23);
             this.editorCommentTextBox.Multiline = true;
             this.editorCommentTextBox.Name = "editorCommentTextBox";
             this.editorCommentTextBox.ReadOnly = true;
-            this.editorCommentTextBox.Size = new System.Drawing.Size(343, 82);
+            this.editorCommentTextBox.Size = new System.Drawing.Size(337, 56);
             this.editorCommentTextBox.TabIndex = 0;
             this.editorCommentTextBox.Text = "Editors opinion";
+            // 
+            // editorLabel
+            // 
+            this.editorLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.editorLabel.AutoSize = true;
+            this.editorLabel.Location = new System.Drawing.Point(3, 3);
+            this.editorLabel.Name = "editorLabel";
+            this.editorLabel.Size = new System.Drawing.Size(63, 13);
+            this.editorLabel.TabIndex = 1;
+            this.editorLabel.Text = "Editor name";
             // 
             // uploadGroupBox
             // 
@@ -283,6 +350,16 @@
             this.uploadTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.uploadTableLayoutPanel.Size = new System.Drawing.Size(343, 126);
             this.uploadTableLayoutPanel.TabIndex = 0;
+            // 
+            // uploadControl
+            // 
+            this.uploadControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uploadControl.Location = new System.Drawing.Point(3, 3);
+            this.uploadControl.Name = "uploadControl";
+            this.uploadControl.Size = new System.Drawing.Size(337, 100);
+            this.uploadControl.TabIndex = 0;
+            this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
             // 
             // uploadProgressBar
             // 
@@ -316,8 +393,24 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.paperToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.newToolStripMenuItem.Text = "New";
+            // 
+            // paperToolStripMenuItem
+            // 
+            this.paperToolStripMenuItem.Image = global::Magazine.Properties.Resources.paper_small;
+            this.paperToolStripMenuItem.Name = "paperToolStripMenuItem";
+            this.paperToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.paperToolStripMenuItem.Text = "Paper";
+            this.paperToolStripMenuItem.Click += new System.EventHandler(this.paperToolStripMenuItem_Click);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::Magazine.Properties.Resources.refresh1;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -332,11 +425,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(314, 24);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog";
-            this.openFileDialog.Filter = "\"PDF files (*.pdf)|*.pdf|All files (*.*)|*.*\";";
             // 
             // userToolStripDropDownButton
             // 
@@ -358,69 +446,10 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // addPaperButton
+            // openFileDialog
             // 
-            this.addPaperButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addPaperButton.Image = global::Magazine.Properties.Resources.add;
-            this.addPaperButton.Location = new System.Drawing.Point(280, 314);
-            this.addPaperButton.Name = "addPaperButton";
-            this.addPaperButton.Size = new System.Drawing.Size(30, 29);
-            this.addPaperButton.TabIndex = 3;
-            this.addPaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.addPaperButton, "Add new paper");
-            this.addPaperButton.UseVisualStyleBackColor = true;
-            this.addPaperButton.Click += new System.EventHandler(this.addPaperButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cancelButton.Image = global::Magazine.Properties.Resources.cancel;
-            this.cancelButton.Location = new System.Drawing.Point(316, 314);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(29, 29);
-            this.cancelButton.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.cancelButton, "Cancel paper");
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // paperToolStripMenuItem
-            // 
-            this.paperToolStripMenuItem.Image = global::Magazine.Properties.Resources.paper_small;
-            this.paperToolStripMenuItem.Name = "paperToolStripMenuItem";
-            this.paperToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.paperToolStripMenuItem.Text = "Paper";
-            this.paperToolStripMenuItem.Click += new System.EventHandler(this.paperToolStripMenuItem_Click);
-            // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Image = global::Magazine.Properties.Resources.refresh1;
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
-            // 
-            // papersSearchPromptTextBox
-            // 
-            this.papersTableLayoutPanel1.SetColumnSpan(this.papersSearchPromptTextBox, 2);
-            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 3);
-            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
-            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(342, 20);
-            this.papersSearchPromptTextBox.TabIndex = 2;
-            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
-            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
-            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.projectsSearchPromptTextBox_TextChanged);
-            // 
-            // uploadControl
-            // 
-            this.uploadControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uploadControl.Location = new System.Drawing.Point(3, 3);
-            this.uploadControl.Name = "uploadControl";
-            this.uploadControl.Size = new System.Drawing.Size(337, 100);
-            this.uploadControl.TabIndex = 0;
-            this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "\"PDF files (*.pdf)|*.pdf|All files (*.*)|*.*\";";
             // 
             // UserForm
             // 
@@ -430,8 +459,9 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.formTableLayoutPanel);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserForm";
-            this.Text = "UserForm";
+            this.Text = "VS Magazine";
             this.ResizeEnd += new System.EventHandler(this.UserForm_ResizeEnd);
             this.SizeChanged += new System.EventHandler(this.UserForm_SizeChanged);
             this.formTableLayoutPanel.ResumeLayout(false);
@@ -443,7 +473,8 @@
             this.submissionsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.submissionsDataListView)).EndInit();
             this.editorCommentGroupBox.ResumeLayout(false);
-            this.editorCommentGroupBox.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.uploadGroupBox.ResumeLayout(false);
             this.uploadTableLayoutPanel.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -487,5 +518,7 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label editorLabel;
     }
 }

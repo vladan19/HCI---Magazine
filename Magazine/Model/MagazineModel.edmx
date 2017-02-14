@@ -28,7 +28,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Title" Type="text" Nullable="false" />
           <Property Name="Author" Type="int" Nullable="false" />
           <Property Name="DateOfPublishing" Type="date" />
           <Property Name="Editor" Type="int" />
@@ -41,7 +41,7 @@
           </Key>
           <Property Name="USER_id" Type="int" Nullable="false" />
           <Property Name="FILE_id" Type="int" Nullable="false" />
-          <Property Name="Comment" Type="varchar" MaxLength="200" />
+          <Property Name="Comment" Type="text" />
           <Property Name="STATUS_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="status">
@@ -231,7 +231,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Author" Type="Int32" Nullable="false" />
           <Property Name="DateOfPublishing" Type="DateTime" />
           <Property Name="Editor" Type="Int32" />
@@ -248,7 +248,7 @@
           </Key>
           <Property Name="USER_id" Type="Int32" Nullable="false" />
           <Property Name="FILE_id" Type="Int32" Nullable="false" />
-          <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="STATUS_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="file" Relationship="Self.fk_REVIEWER_FILE1" FromRole="review" ToRole="file" />
           <NavigationProperty Name="status" Relationship="Self.fk_REVIEWER_STATUS1" FromRole="review" ToRole="status" />

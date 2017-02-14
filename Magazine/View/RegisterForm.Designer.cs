@@ -219,6 +219,7 @@
             this.Controls.Add(this.firstnameLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegisterForm";
             this.Text = "VS Magazine Register";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
