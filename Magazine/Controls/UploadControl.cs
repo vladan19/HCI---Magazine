@@ -13,5 +13,25 @@ namespace Magazine.Controls {
         public UploadControl() {
             InitializeComponent();
         }
+        public new event EventHandler Click {
+            add {
+                base.Click += value;
+                foreach (Control control in Controls) {
+                    control.Click += value;
+                    foreach (Control item in control.Controls) {
+                        item.Click += value;
+                    }
+                }
+            }
+            remove {
+                base.Click -= value;
+                foreach (Control control in Controls) {
+                    control.Click -= value;
+                    foreach (Control item in control.Controls) {
+                        item.Click -= value;
+                    }
+                }
+            }
+        }
     }
 }

@@ -33,7 +33,6 @@
             this.statusColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
             this.addPaperButton = new System.Windows.Forms.Button();
-            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.submissionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.submissionsGroupBox = new System.Windows.Forms.GroupBox();
@@ -45,7 +44,6 @@
             this.editorLabel = new System.Windows.Forms.Label();
             this.uploadGroupBox = new System.Windows.Forms.GroupBox();
             this.uploadTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.uploadControl = new Magazine.Controls.UploadControl();
             this.uploadProgressBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +55,8 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.papersSearchPromptTextBox = new Khronos_PMS.View.CustomControls.PromptTextBox();
+            this.uploadControl = new Magazine.Controls.UploadControl();
             this.formTableLayoutPanel.SuspendLayout();
             this.papersGroupBox.SuspendLayout();
             this.papersTableLayoutPanel1.SuspendLayout();
@@ -191,19 +191,6 @@
             this.toolTip1.SetToolTip(this.addPaperButton, "Add new paper");
             this.addPaperButton.UseVisualStyleBackColor = true;
             this.addPaperButton.Click += new System.EventHandler(this.addPaperButton_Click);
-            // 
-            // papersSearchPromptTextBox
-            // 
-            this.papersTableLayoutPanel1.SetColumnSpan(this.papersSearchPromptTextBox, 2);
-            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 3);
-            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
-            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(342, 20);
-            this.papersSearchPromptTextBox.TabIndex = 2;
-            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
-            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
-            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.projectsSearchPromptTextBox_TextChanged);
             // 
             // cancelButton
             // 
@@ -352,16 +339,6 @@
             this.uploadTableLayoutPanel.Size = new System.Drawing.Size(343, 126);
             this.uploadTableLayoutPanel.TabIndex = 0;
             // 
-            // uploadControl
-            // 
-            this.uploadControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uploadControl.Location = new System.Drawing.Point(3, 3);
-            this.uploadControl.Name = "uploadControl";
-            this.uploadControl.Size = new System.Drawing.Size(337, 100);
-            this.uploadControl.TabIndex = 0;
-            this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
-            // 
             // uploadProgressBar
             // 
             this.uploadProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -451,6 +428,29 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "\"PDF files (*.pdf)|*.pdf|All files (*.*)|*.*\";";
+            // 
+            // papersSearchPromptTextBox
+            // 
+            this.papersTableLayoutPanel1.SetColumnSpan(this.papersSearchPromptTextBox, 2);
+            this.papersSearchPromptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.papersSearchPromptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.papersSearchPromptTextBox.Location = new System.Drawing.Point(3, 3);
+            this.papersSearchPromptTextBox.Name = "papersSearchPromptTextBox";
+            this.papersSearchPromptTextBox.Size = new System.Drawing.Size(342, 20);
+            this.papersSearchPromptTextBox.TabIndex = 2;
+            this.papersSearchPromptTextBox.WaterMarkColor = System.Drawing.Color.Gray;
+            this.papersSearchPromptTextBox.WaterMarkText = "Type here to search";
+            this.papersSearchPromptTextBox.TextChanged += new System.EventHandler(this.projectsSearchPromptTextBox_TextChanged);
+            // 
+            // uploadControl
+            // 
+            this.uploadControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uploadControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uploadControl.Location = new System.Drawing.Point(3, 3);
+            this.uploadControl.Name = "uploadControl";
+            this.uploadControl.Size = new System.Drawing.Size(337, 100);
+            this.uploadControl.TabIndex = 0;
+            this.uploadControl.Click += new System.EventHandler(this.uploadControl_Click);
             // 
             // UserForm
             // 

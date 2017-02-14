@@ -122,6 +122,8 @@
             // 
             // firstnameTextBox
             // 
+            this.firstnameTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.firstnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.firstnameTextBox.Location = new System.Drawing.Point(254, 42);
             this.firstnameTextBox.Name = "firstnameTextBox";
             this.firstnameTextBox.Size = new System.Drawing.Size(196, 20);
@@ -129,6 +131,8 @@
             // 
             // lastnameTextBox
             // 
+            this.lastnameTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lastnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lastnameTextBox.Location = new System.Drawing.Point(254, 68);
             this.lastnameTextBox.Name = "lastnameTextBox";
             this.lastnameTextBox.Size = new System.Drawing.Size(196, 20);
@@ -136,6 +140,8 @@
             // 
             // emailTextBox
             // 
+            this.emailTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.emailTextBox.Location = new System.Drawing.Point(254, 94);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(196, 20);
@@ -143,6 +149,8 @@
             // 
             // usernameTextBox
             // 
+            this.usernameTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.usernameTextBox.Location = new System.Drawing.Point(254, 120);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(196, 20);
@@ -150,6 +158,8 @@
             // 
             // passwordTextBox
             // 
+            this.passwordTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordTextBox.Location = new System.Drawing.Point(254, 146);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(196, 20);
@@ -158,6 +168,8 @@
             // 
             // confirmTextBox
             // 
+            this.confirmTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.confirmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmTextBox.Location = new System.Drawing.Point(254, 172);
             this.confirmTextBox.Name = "confirmTextBox";
             this.confirmTextBox.Size = new System.Drawing.Size(196, 20);
@@ -219,7 +231,9 @@
             this.Controls.Add(this.firstnameLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "RegisterForm";
             this.Text = "VS Magazine Register";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
