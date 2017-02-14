@@ -27,22 +27,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubmissionsForm));
             this.submissionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.submissionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.submissionsDataListView = new BrightIdeasSoftware.DataListView();
+            this.timestampColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
             this.commentGroupBox = new System.Windows.Forms.GroupBox();
             this.commentTextBox = new System.Windows.Forms.TextBox();
             this.reviewsGroupBox = new System.Windows.Forms.GroupBox();
             this.reviewsDataListView = new BrightIdeasSoftware.DataListView();
             this.reviewerColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.describedTaskRenderer = new BrightIdeasSoftware.DescribedTaskRenderer();
-            this.submissionsDataListView = new BrightIdeasSoftware.DataListView();
-            this.timestampColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.iconsImageList = new System.Windows.Forms.ImageList(this.components);
             this.reviewImageList = new System.Windows.Forms.ImageList(this.components);
             this.submissionsTableLayoutPanel.SuspendLayout();
             this.submissionsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.submissionsDataListView)).BeginInit();
             this.commentGroupBox.SuspendLayout();
             this.reviewsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reviewsDataListView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.submissionsDataListView)).BeginInit();
             this.SuspendLayout();
             // 
             // submissionsTableLayoutPanel
@@ -73,6 +73,49 @@
             this.submissionsGroupBox.TabIndex = 0;
             this.submissionsGroupBox.TabStop = false;
             this.submissionsGroupBox.Text = "Submissions";
+            // 
+            // submissionsDataListView
+            // 
+            this.submissionsDataListView.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.submissionsDataListView.AllColumns.Add(this.timestampColumn);
+            this.submissionsDataListView.AutoGenerateColumns = false;
+            this.submissionsDataListView.CellEditUseWholeCell = false;
+            this.submissionsDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.timestampColumn});
+            this.submissionsDataListView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.submissionsDataListView.DataSource = null;
+            this.submissionsDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.submissionsDataListView.FullRowSelect = true;
+            this.submissionsDataListView.GridLines = true;
+            this.submissionsDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.submissionsDataListView.HideSelection = false;
+            this.submissionsDataListView.Location = new System.Drawing.Point(3, 16);
+            this.submissionsDataListView.MultiSelect = false;
+            this.submissionsDataListView.Name = "submissionsDataListView";
+            this.submissionsDataListView.ShowGroups = false;
+            this.submissionsDataListView.Size = new System.Drawing.Size(288, 291);
+            this.submissionsDataListView.SmallImageList = this.iconsImageList;
+            this.submissionsDataListView.TabIndex = 1;
+            this.submissionsDataListView.UseCompatibleStateImageBehavior = false;
+            this.submissionsDataListView.View = System.Windows.Forms.View.Details;
+            this.submissionsDataListView.SelectionChanged += new System.EventHandler(this.submissionsDataListView_SelectionChanged);
+            // 
+            // timestampColumn
+            // 
+            this.timestampColumn.AspectName = "Timestamp";
+            this.timestampColumn.AutoCompleteEditor = false;
+            this.timestampColumn.AutoCompleteEditorMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.timestampColumn.FillsFreeSpace = true;
+            this.timestampColumn.Groupable = false;
+            this.timestampColumn.IsEditable = false;
+            this.timestampColumn.Text = "Date of submission";
+            this.timestampColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // iconsImageList
+            // 
+            this.iconsImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iconsImageList.ImageStream")));
+            this.iconsImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.iconsImageList.Images.SetKeyName(0, "date.png");
             // 
             // commentGroupBox
             // 
@@ -139,49 +182,6 @@
             this.reviewerColumn.Renderer = this.describedTaskRenderer;
             this.reviewerColumn.Text = "Rewiever";
             // 
-            // submissionsDataListView
-            // 
-            this.submissionsDataListView.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.submissionsDataListView.AllColumns.Add(this.timestampColumn);
-            this.submissionsDataListView.AutoGenerateColumns = false;
-            this.submissionsDataListView.CellEditUseWholeCell = false;
-            this.submissionsDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.timestampColumn});
-            this.submissionsDataListView.Cursor = System.Windows.Forms.Cursors.Default;
-            this.submissionsDataListView.DataSource = null;
-            this.submissionsDataListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.submissionsDataListView.FullRowSelect = true;
-            this.submissionsDataListView.GridLines = true;
-            this.submissionsDataListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.submissionsDataListView.HideSelection = false;
-            this.submissionsDataListView.Location = new System.Drawing.Point(3, 16);
-            this.submissionsDataListView.MultiSelect = false;
-            this.submissionsDataListView.Name = "submissionsDataListView";
-            this.submissionsDataListView.ShowGroups = false;
-            this.submissionsDataListView.Size = new System.Drawing.Size(288, 291);
-            this.submissionsDataListView.SmallImageList = this.iconsImageList;
-            this.submissionsDataListView.TabIndex = 1;
-            this.submissionsDataListView.UseCompatibleStateImageBehavior = false;
-            this.submissionsDataListView.View = System.Windows.Forms.View.Details;
-            this.submissionsDataListView.SelectionChanged += new System.EventHandler(this.submissionsDataListView_SelectionChanged);
-            // 
-            // timestampColumn
-            // 
-            this.timestampColumn.AspectName = "Timestamp";
-            this.timestampColumn.AutoCompleteEditor = false;
-            this.timestampColumn.AutoCompleteEditorMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.timestampColumn.FillsFreeSpace = true;
-            this.timestampColumn.Groupable = false;
-            this.timestampColumn.IsEditable = false;
-            this.timestampColumn.Text = "Date of submission";
-            this.timestampColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // iconsImageList
-            // 
-            this.iconsImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iconsImageList.ImageStream")));
-            this.iconsImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.iconsImageList.Images.SetKeyName(0, "date.png");
-            // 
             // reviewImageList
             // 
             this.reviewImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("reviewImageList.ImageStream")));
@@ -196,14 +196,14 @@
             this.Controls.Add(this.submissionsTableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubmissionsForm";
-            this.Text = "SubmissionsForm";
+            this.Text = "Submissions";
             this.submissionsTableLayoutPanel.ResumeLayout(false);
             this.submissionsGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.submissionsDataListView)).EndInit();
             this.commentGroupBox.ResumeLayout(false);
             this.commentGroupBox.PerformLayout();
             this.reviewsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.reviewsDataListView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.submissionsDataListView)).EndInit();
             this.ResumeLayout(false);
 
         }
